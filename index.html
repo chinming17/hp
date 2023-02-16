@@ -23,13 +23,13 @@
     />
   </head>
   <body>
-    <div class="div3">
-      <div class="div4">
-        <div class="div5">
+    <div class="div">
+      <div class="div1">
+        <div class="div2">
           <p class="blank-line">&nbsp;</p>
           <p class="by-chinming-chan">© 2023 by Chinming Chan.</p>
         </div>
-        <div class="div6">
+        <div class="div3">
           <div class="follow-wrapper"><div class="follow">Follow</div></div>
           <div class="e-mail-wrapper"><div class="follow">E-mail</div></div>
           <div class="linkedin-parent" data-scroll-to="frameContainer1">
@@ -63,8 +63,8 @@
           </div>
         </div>
       </div>
-      <div class="div7">
-        <div class="div8" data-scroll-to="text">
+      <div class="div4">
+        <div class="div5" data-scroll-to="text">
           <span class="txt"
             ><p class="blank-line">
               I am a freelance translator. I like music, movies and playing
@@ -78,16 +78,26 @@
             </p></span
           >
         </div>
-        <div class="div9">Here’s my blog & things about me.</div>
-        <div class="div10">HEY</div>
-        <div class="div11">
-          <div class="div12"></div>
-          <div class="div13"></div>
+        <div class="div6">Here’s my blog & things about me.</div>
+        <div class="div7">HEY</div>
+        <div class="div8">
+          <div class="div9"></div>
+          <div class="div10"></div>
         </div>
         <div class="blogs">BLOGS</div>
         <div class="rsum" id="rSUMText">RÉSUMÉ</div>
       </div>
-      <div class="div14"></div>
+      <div class="div11"></div>
+      <div class="div12">
+        <div class="div13"></div>
+        <b class="b">CC BLOG</b>
+        <div class="div14">
+          <div class="about-me" id="aBOUTMEText">ABOUT ME</div>
+          <div class="blogs1">BLOGS</div>
+          <div class="more" id="mOREText">MORE</div>
+          <div class="contact" id="cONTACTText">CONTACT</div>
+        </div>
+      </div>
       <div class="div15">
         <img class="icon" alt="" src="public/@2x.png" />
         <div class="div16">
@@ -118,16 +128,6 @@
             src="public/skype1@2x.png"
             id="skypeIcon1"
           />
-        </div>
-      </div>
-      <div class="div20">
-        <div class="div21"></div>
-        <b class="b">CC BLOG</b>
-        <div class="div22">
-          <div class="about-me" id="aBOUTMEText">ABOUT ME</div>
-          <div class="blogs1">BLOGS</div>
-          <div class="more" id="mOREText">MORE</div>
-          <div class="contact" id="cONTACTText">CONTACT</div>
         </div>
       </div>
     </div>
@@ -170,34 +170,6 @@
         });
       }
       
-      var linkedInIcon1 = document.getElementById("linkedInIcon1");
-      if (linkedInIcon1) {
-        linkedInIcon1.addEventListener("click", function () {
-          window.open("www.linkedin.com/in/chinming17");
-        });
-      }
-      
-      var steamIcon1 = document.getElementById("steamIcon1");
-      if (steamIcon1) {
-        steamIcon1.addEventListener("click", function () {
-          window.open("https://steamcommunity.com/id/ChinMinG17/");
-        });
-      }
-      
-      var weChatIcon1 = document.getElementById("weChatIcon1");
-      if (weChatIcon1) {
-        weChatIcon1.addEventListener("click", function (e) {
-          window.location.href = "./component2.html";
-        });
-      }
-      
-      var skypeIcon1 = document.getElementById("skypeIcon1");
-      if (skypeIcon1) {
-        skypeIcon1.addEventListener("click", function (e) {
-          window.location.href = "./component1.html";
-        });
-      }
-      
       var aBOUTMEText = document.getElementById("aBOUTMEText");
       if (aBOUTMEText) {
         aBOUTMEText.addEventListener("click", function () {
@@ -225,6 +197,34 @@
           if (anchor) {
             anchor.scrollIntoView({ block: "start", behavior: "smooth" });
           }
+        });
+      }
+      
+      var linkedInIcon1 = document.getElementById("linkedInIcon1");
+      if (linkedInIcon1) {
+        linkedInIcon1.addEventListener("click", function () {
+          window.open("www.linkedin.com/in/chinming17");
+        });
+      }
+      
+      var steamIcon1 = document.getElementById("steamIcon1");
+      if (steamIcon1) {
+        steamIcon1.addEventListener("click", function () {
+          window.open("https://steamcommunity.com/id/ChinMinG17/");
+        });
+      }
+      
+      var weChatIcon1 = document.getElementById("weChatIcon1");
+      if (weChatIcon1) {
+        weChatIcon1.addEventListener("click", function (e) {
+          window.location.href = "./component2.html";
+        });
+      }
+      
+      var skypeIcon1 = document.getElementById("skypeIcon1");
+      if (skypeIcon1) {
+        skypeIcon1.addEventListener("click", function (e) {
+          window.location.href = "./component1.html";
         });
       }
       </script>

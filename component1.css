@@ -20,9 +20,9 @@ body {
   width: 62px;
   cursor: pointer;
 }
-.div1 {
+.div21 {
   position: relative;
-  background-color: var(--color-white);
+  background-color: #173746;
   width: 100%;
   height: 852px;
   overflow: hidden;
