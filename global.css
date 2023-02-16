@@ -1,0 +1,21 @@
+:root {
+  /* fonts */
+  --font-lato: Lato;
+  --font-sassy-frass: "Sassy Frass";
+  --font-playfair-display: "Playfair Display";
+
+  /* font sizes */
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-mediumblue: #0050ff;
+
+  /* Paddings */
+  --padding-md: 20px;
+
+  /* border radiuses */
+  --br-md: 30px;
+}
