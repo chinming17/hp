@@ -93,33 +93,35 @@ body {
 .div6,
 .div7 {
   position: absolute;
-  left: 125px;
+  display: flex;
+  align-items: center;
 }
 .div5 {
-  top: 462px;
+  top: calc(50% + 84px);
+  left: calc(50% - 304px);
   font-weight: 300;
   white-space: pre-wrap;
   text-align: justify;
-  display: flex;
-  align-items: center;
   width: 550px;
+  height: 144px;
 }
 .div6,
 .div7 {
+  top: 269px;
+  left: 125px;
+  font-size: 32px;
   font-weight: 600;
   font-family: var(--font-playfair-display);
-}
-.div6 {
-  top: 269px;
-  font-size: 32px;
-  display: flex;
-  align-items: center;
   width: 395px;
+  height: 86px;
 }
 .div7 {
   top: 120px;
   font-size: 112px;
   text-align: center;
+  justify-content: center;
+  width: 226px;
+  height: 149px;
 }
 .div9 {
   position: relative;
