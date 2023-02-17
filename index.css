@@ -14,7 +14,7 @@ body {
   position: absolute;
 }
 .div2 {
-  top: calc(50% - 22px);
+  bottom: 28px;
   left: 70px;
   font-weight: 300;
 }
@@ -79,58 +79,20 @@ body {
   box-sizing: border-box;
 }
 .div3 {
-  position: absolute;
   width: calc(100% - 1084px);
   right: 0;
   bottom: 1px;
   left: 1084px;
   height: 100px;
 }
-.txt {
-  line-break: anywhere;
-  width: 100%;
-}
-.div5,
-.div6,
-.div7 {
-  left: 16.67%;
-  display: flex;
-  align-items: center;
-}
-.div5 {
-  position: absolute;
-  height: calc(100% - 595px);
-  width: 62.82%;
-  top: 463px;
-  font-weight: 300;
-  white-space: pre-wrap;
-}
-.div6,
-.div7 {
-  font-weight: 600;
-  font-family: var(--font-playfair-display);
-}
+.blogs,
+.div3,
 .div6 {
   position: absolute;
-  width: 46.04%;
-  top: 227px;
-  font-size: 32px;
-  height: 86px;
 }
-.div7 {
-  height: 19.68%;
-  width: 26.34%;
-  top: 10.3%;
-  font-size: 112px;
-}
-.blogs,
-.div7,
-.div9 {
-  position: absolute;
-}
-.div9 {
+.div6 {
   top: 35px;
-  left: 183px;
+  left: 197px;
   border-radius: var(--br-md);
   background-color: var(--color-white);
   border: 1px solid var(--color-black);
@@ -140,12 +102,12 @@ body {
 }
 .blogs {
   top: 40.5px;
-  left: 206.5px;
+  left: 220.5px;
   font-weight: 600;
 }
-.div10 {
+.div7 {
   top: 35px;
-  left: 23px;
+  left: 28px;
   border-radius: var(--br-md);
   background-color: var(--color-mediumblue);
   border: 1px solid var(--color-black);
@@ -153,25 +115,85 @@ body {
   width: 112px;
   height: 36px;
 }
-.div10,
-.div8,
+.div5,
+.div7,
 .rsum {
   position: absolute;
 }
 .rsum {
   top: 41px;
-  left: 38px;
+  left: 43px;
   font-weight: 600;
   color: var(--color-white);
   cursor: pointer;
 }
-.div8 {
-  width: calc(100% - 545px);
-  top: calc(50% - 43.5px);
-  right: 402px;
-  left: 143px;
+.div5 {
+  height: 14%;
+  width: 83.33%;
+  top: 44.25%;
+  right: 0;
+  bottom: 41.74%;
+  left: 16.67%;
   border-radius: 2px;
-  height: 106px;
+}
+.div9 {
+  height: 53.41%;
+  width: 57.22%;
+  top: 7.89%;
+  left: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.div10,
+.div8,
+.div9 {
+  position: absolute;
+}
+.div10 {
+  height: 30.82%;
+  width: 100%;
+  top: 61.29%;
+  left: 0;
+  font-size: 32px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.div8 {
+  height: 36.86%;
+  width: 46.04%;
+  top: 7.4%;
+  right: 37.3%;
+  bottom: 55.75%;
+  left: 16.67%;
+  font-size: 112px;
+  font-family: var(--font-playfair-display);
+}
+.txt {
+  line-break: anywhere;
+  width: 100%;
+}
+.div11,
+.div12 {
+  position: absolute;
+}
+.div12 {
+  width: 100%;
+  top: 11.7%;
+  left: 0;
+  font-weight: 300;
+  white-space: pre-wrap;
+  display: flex;
+  align-items: center;
+}
+.div11 {
+  height: calc(100% - 569px);
+  width: 62.82%;
+  top: 441px;
+  right: 20.51%;
+  bottom: 128px;
+  left: 16.67%;
 }
 .div4 {
   height: 77.09%;
@@ -184,19 +206,19 @@ body {
   text-align: justify;
   font-size: var(--font-size-lg);
 }
-.div11,
 .div13,
+.div15,
 .div4 {
   position: absolute;
 }
-.div11 {
+.div13 {
   width: calc(100% - 858px);
   top: calc(50% - 366px);
   right: 858px;
   left: 0;
   height: 756px;
 }
-.div13 {
+.div15 {
   top: 14px;
   left: 16px;
   background-color: var(--color-mediumblue);
@@ -247,19 +269,19 @@ body {
   right: 40px;
   width: 109px;
 }
-.div14 {
+.div16 {
   width: calc(100% - 147px);
   top: 14px;
   right: 0;
   left: 147px;
   height: 86px;
 }
-.div12,
 .div14,
+.div16,
 .icon {
   position: absolute;
 }
-.div12 {
+.div14 {
   width: 100%;
   top: 0;
   right: 0;
@@ -276,16 +298,16 @@ body {
   height: 216px;
   object-fit: cover;
 }
-.div16 {
+.div18 {
   top: 251px;
   left: 120.5px;
 }
-.div16,
-.div17,
-.div18 {
+.div18,
+.div19,
+.div20 {
   position: absolute;
 }
-.div17 {
+.div19 {
   top: 405.25px;
   left: 162.25px;
   border-top: 1.5px solid var(--color-mediumblue);
@@ -293,7 +315,7 @@ body {
   width: 57.5px;
   height: 1.5px;
 }
-.div18 {
+.div20 {
   top: 421px;
   left: 135.5px;
   font-size: var(--font-size-base);
@@ -308,12 +330,12 @@ body {
   object-fit: cover;
   cursor: pointer;
 }
-.div15,
-.div19 {
+.div17,
+.div21 {
   position: absolute;
   mix-blend-mode: normal;
 }
-.div19 {
+.div21 {
   top: 458px;
   left: 0;
   background-color: var(--color-white);
@@ -325,7 +347,7 @@ body {
   justify-content: center;
   gap: 24px;
 }
-.div15 {
+.div17 {
   top: calc(50% - 272px);
   left: calc(50% - 382px);
   background-color: #f4ece6;
