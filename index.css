@@ -136,6 +136,10 @@ body {
   left: 16.67%;
   border-radius: 2px;
 }
+.i-am-a {
+  margin-block-start: 0;
+  margin-block-end: 10px;
+}
 .txt {
   line-break: anywhere;
   width: 100%;
@@ -149,6 +153,7 @@ body {
   align-items: center;
 }
 .div8 {
+  height: 18.36%;
   width: 62.82%;
   top: 61.16%;
   font-weight: 300;
