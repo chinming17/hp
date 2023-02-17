@@ -91,42 +91,42 @@ body {
   width: 100%;
 }
 .div5,
-.div6 {
+.div6,
+.div7 {
   left: 16.67%;
   display: flex;
   align-items: center;
 }
 .div5 {
   position: absolute;
-  width: 64.1%;
-  top: 462px;
+  height: calc(100% - 595px);
+  width: 62.82%;
+  top: 463px;
   font-weight: 300;
   white-space: pre-wrap;
-  height: 144px;
+}
+.div6,
+.div7 {
+  font-weight: 600;
+  font-family: var(--font-playfair-display);
 }
 .div6 {
+  position: absolute;
   width: 46.04%;
   top: 227px;
   font-size: 32px;
-  font-weight: 600;
-  font-family: var(--font-playfair-display);
   height: 86px;
-}
-.div6,
-.div7,
-.div9 {
-  position: absolute;
 }
 .div7 {
   height: 19.68%;
   width: 26.34%;
   top: 10.3%;
-  left: 16.67%;
   font-size: 112px;
-  font-weight: 600;
-  font-family: var(--font-playfair-display);
-  display: flex;
-  align-items: center;
+}
+.blogs,
+.div7,
+.div9 {
+  position: absolute;
 }
 .div9 {
   top: 35px;
@@ -143,11 +143,6 @@ body {
   left: 206.5px;
   font-weight: 600;
 }
-.blogs,
-.div10,
-.rsum {
-  position: absolute;
-}
 .div10 {
   top: 35px;
   left: 23px;
@@ -157,6 +152,11 @@ body {
   box-sizing: border-box;
   width: 112px;
   height: 36px;
+}
+.div10,
+.div8,
+.rsum {
+  position: absolute;
 }
 .rsum {
   top: 41px;
@@ -173,11 +173,6 @@ body {
   border-radius: 2px;
   height: 106px;
 }
-.div11,
-.div4,
-.div8 {
-  position: absolute;
-}
 .div4 {
   height: 77.09%;
   width: 56.75%;
@@ -189,6 +184,11 @@ body {
   text-align: justify;
   font-size: var(--font-size-lg);
 }
+.div11,
+.div13,
+.div4 {
+  position: absolute;
+}
 .div11 {
   width: calc(100% - 858px);
   top: calc(50% - 366px);
@@ -196,22 +196,26 @@ body {
   left: 0;
   height: 756px;
 }
-.b,
 .div13 {
-  position: absolute;
   top: 14px;
-}
-.div13 {
   left: 16px;
   background-color: var(--color-mediumblue);
   width: 24px;
   height: 24px;
 }
-.b {
-  left: 55px;
+.about-me,
+.b,
+.blogs1,
+.contact,
+.more {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.b {
+  top: 14px;
+  left: 55px;
   width: 77px;
   height: 22px;
 }
@@ -219,34 +223,36 @@ body {
 .blogs1,
 .contact,
 .more {
-  position: absolute;
   top: 32px;
   font-weight: 300;
 }
 .about-me {
-  left: 894px;
+  right: 353px;
+  width: 118px;
   cursor: pointer;
 }
 .blogs1,
 .contact,
 .more {
-  left: 1027px;
+  right: 256px;
+  width: 82px;
 }
 .contact,
 .more {
-  left: 1124px;
+  right: 164px;
+  width: 77px;
   cursor: pointer;
 }
 .contact {
-  left: 1216px;
+  right: 40px;
+  width: 109px;
 }
 .div14 {
-  width: calc(100% - 172px);
+  width: calc(100% - 147px);
   top: 14px;
-  right: 25px;
+  right: 0;
   left: 147px;
   height: 86px;
-  overflow: hidden;
 }
 .div12,
 .div14,
