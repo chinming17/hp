@@ -148,20 +148,19 @@ body {
 .div8,
 .div9 {
   position: absolute;
+  left: 16.67%;
   display: flex;
   align-items: center;
 }
 .div8 {
-  height: 20.34%;
-  width: calc(100% - 407px);
-  top: 58.26%;
-  left: 143px;
+  height: calc(100% - 603px);
+  width: 52.56%;
+  top: 441px;
   font-weight: 300;
   white-space: pre-wrap;
 }
 .div10,
 .div9 {
-  left: 16.67%;
   font-weight: 600;
   font-family: var(--font-playfair-display);
 }
