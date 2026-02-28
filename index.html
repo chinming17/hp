@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinming Chan | Portfolio</title>
     
-    <link rel="icon" type="image/png" href="./public/favicon
-/favicon-32x32.png?v=2">
-    <link rel="apple-touch-icon" href="./public/favicon
-/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" href="./public/favicon/favicon-32x32.png?v=2">
+    <link rel="apple-touch-icon" href="./public/favicon/favicon-32x32.png?v=2">
 
     <meta property="og:title" content="Chinming Chan | Portfolio">
     <meta property="og:image" content="https://chinming17.github.io/chinming-hp/public/avatar_Rectangle.png">
@@ -18,7 +16,7 @@
     <meta name="author" content="Chinming Chan">
     <meta name="description" content="Chinming Chan的個人作品集。展示在大阪的專業諮詢與管理實務經驗。">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -29,15 +27,15 @@
         <span class="dot-label">
             <span class="lang-content zh">個人簡介</span>
             <span class="lang-content jp" style="display:none;">自己紹介</span>
-            <span class="lang-content en" style="display:none;">ABOUT</span>
+            <span class="lang-content en" style="display:none;">ABOUT ME</span>
         </span>
         <span class="dot"></span>
     </a>
     <a href="#resume" class="dot-nav-item">
         <span class="dot-label">
             <span class="lang-content zh">履歷</span>
-            <span class="lang-content jp" style="display:none;">履歴書</span>
-            <span class="lang-content en" style="display:none;">RÉSUMÉ</span>
+            <span class="lang-content jp" style="display:none;">職歴</span>
+            <span class="lang-content en" style="display:none;">Professional Experience</span>
         </span>
         <span class="dot"></span>
     </a>
@@ -182,6 +180,9 @@
             <ul class="credits-list">
                 <li>Background Noise Texture by <a href="https://grainy-gradients.vercel.app/" target="_blank" rel="noopener noreferrer">Grainy Gradients</a></li>
                 <li>Icons provided by <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">FontAwesome</a></li>
+                <li>Hand Painted icons by <a href="https://github.com/Semporia/Hand-Painted-icon" target="_blank" rel="noopener noreferrer">Semporioa</a></li>
+                <li>Favicon conversion by <a href="https://favicon.io/favicon-converter/" target="_blank" rel="noopener noreferrer">favicon.io</a></li>
+                <li>Game icons provided by <a href="https://simpleicons.org/?q=game" target="_blank" rel="noopener noreferrer">Simple Icons</a></li>
             </ul>
         </div>
     </section>
@@ -270,6 +271,10 @@
 
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        
+        // 避免 iOS 或手機版邊界回彈觸發展開
+        if (scrollTop < 0 || scrollTop > maxScroll) return;
         
         if (scrollTop > 50) {
             if (scrollTop > lastScrollTop) {
