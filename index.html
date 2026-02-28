@@ -16,7 +16,7 @@
     <meta name="author" content="Chinming Chan">
     <meta name="description" content="Chinming Chan的個人作品集。展示在大阪的專業諮詢與管理實務經驗。">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -27,15 +27,23 @@
         <span class="dot-label">
             <span class="lang-content zh">個人簡介</span>
             <span class="lang-content jp" style="display:none;">自己紹介</span>
-            <span class="lang-content en" style="display:none;">ABOUT ME</span>
+            <span class="lang-content en" style="display:none;">ABOUT</span>
         </span>
         <span class="dot"></span>
     </a>
     <a href="#resume" class="dot-nav-item">
         <span class="dot-label">
             <span class="lang-content zh">履歷</span>
-            <span class="lang-content jp" style="display:none;">職歴</span>
-            <span class="lang-content en" style="display:none;">Professional Experience</span>
+            <span class="lang-content jp" style="display:none;">履歴書</span>
+            <span class="lang-content en" style="display:none;">RÉSUMÉ</span>
+        </span>
+        <span class="dot"></span>
+    </a>
+    <a href="#blog" class="dot-nav-item">
+        <span class="dot-label">
+            <span class="lang-content zh">部落格</span>
+            <span class="lang-content jp" style="display:none;">ブログ</span>
+            <span class="lang-content en" style="display:none;">BLOG</span>
         </span>
         <span class="dot"></span>
     </a>
@@ -110,7 +118,7 @@
                     <span class="lang-content jp" style="display:none;">職歴</span>
                     <span class="lang-content en" style="display:none;">Professional Experience</span>
                 </a>
-                <a href="#" class="btn btn-secondary">
+                <a href="#blog" class="btn btn-secondary">
                     <span class="lang-content zh">我的部落格</span>
                     <span class="lang-content jp" style="display:none;">ブログ</span>
                     <span class="lang-content en" style="display:none;">MY BLOGS</span>
@@ -169,6 +177,22 @@
         </div>
     </section>
 
+    <section id="blog" class="blog-section">
+        <div class="blog-header">
+            <h2 class="section-title">
+                <span class="lang-content zh">部落格</span>
+                <span class="lang-content jp" style="display:none;">ブログ</span>
+                <span class="lang-content en" style="display:none;">BLOG</span>
+            </h2>
+            <div class="underline"></div>
+        </div>
+        <div class="blog-content">
+            <p class="lang-content zh">文章建置中...</p>
+            <p class="lang-content jp" style="display:none;">記事作成中...</p>
+            <p class="lang-content en" style="display:none;">Articles coming soon...</p>
+        </div>
+    </section>
+
     <section id="credits" class="credits-section">
         <h2 class="section-title">
             <span class="lang-content zh">鳴謝</span>
@@ -183,6 +207,8 @@
                 <li>Hand Painted icons by <a href="https://github.com/Semporia/Hand-Painted-icon" target="_blank" rel="noopener noreferrer">Semporioa</a></li>
                 <li>Favicon conversion by <a href="https://favicon.io/favicon-converter/" target="_blank" rel="noopener noreferrer">favicon.io</a></li>
                 <li>Game icons provided by <a href="https://simpleicons.org/?q=game" target="_blank" rel="noopener noreferrer">Simple Icons</a></li>
+                <li>Fonts provided by <a href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Google Fonts</a></li>
+                <li>Chinese Fonts (源雲明體) provided by <a href="https://github.com/ButTaiwan" target="_blank" rel="noopener noreferrer">ButTaiwan</a></li>
             </ul>
         </div>
     </section>
@@ -265,16 +291,24 @@
         }
     };
     
-    // 導覽列滾動縮放邏輯
+    //導覽列滾動縮放與iOS邊界回彈修復
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
 
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        let maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         
-        // 避免 iOS 或手機版邊界回彈觸發展開
-        if (scrollTop < 0 || scrollTop > maxScroll) return;
+        if (scrollTop <= 0) {
+            navbar.classList.remove('shrunk');
+            lastScrollTop = 0;
+            return;
+        }
+        
+        if (scrollTop >= maxScroll) {
+            lastScrollTop = scrollTop;
+            return;
+        }
         
         if (scrollTop > 50) {
             if (scrollTop > lastScrollTop) {
@@ -286,8 +320,8 @@
             navbar.classList.remove('shrunk');
         }
         
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, false);
+        lastScrollTop = scrollTop;
+    }, { passive: true });
     </script>
 </body>
 </html>
