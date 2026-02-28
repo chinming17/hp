@@ -51,32 +51,13 @@ body::before {
 
 .logo { font-weight: 800; font-size: 1.2rem; color: var(--primary); letter-spacing: 1px; }
 
+/* 隱藏原本 navbar 中的導航鏈接，讓按鈕靠右 */
 .nav-links {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    margin-left: auto;
 }
-
-.nav-item {
-    text-decoration: none;
-    color: var(--primary);
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    position: relative;
-    padding: 5px 0;
-    transition: 0.3s;
-}
-
-.nav-item:hover { transform: translateY(-2px); }
-
-.nav-item::after {
-    content: '';
-    position: absolute; width: 0; height: 2px;
-    bottom: 0; left: 50%; background-color: var(--primary);
-    transition: 0.3s; transform: translateX(-50%);
-}
-.nav-item:hover::after { width: 15px; }
 
 .nav-controls {
     display: flex;
@@ -170,6 +151,51 @@ body.dark-theme .dropdown-content {
     color: var(--accent);
 }
 
+/* 右側懸浮導航欄設計 */
+.side-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1000;
+}
+
+.side-nav-item {
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 12px 18px;
+    background: var(--bg-card);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.side-nav-item:hover {
+    opacity: 1;
+    transform: translateX(-5px);
+    background: var(--white);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+body.dark-theme .side-nav-item {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: var(--primary);
+}
+
+body.dark-theme .side-nav-item:hover {
+    background: var(--bg-main);
+}
+
 .hero-container {
     display: flex;
     min-height: 90vh;
@@ -193,16 +219,16 @@ body.dark-theme .dropdown-content {
 .profile-name { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary); }
 
 .content-area { flex: 1; }
-.main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1; color: var(--primary); margin-bottom: 2rem; }
+.main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
 .bio-text { font-size: 1.1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 550px; }
 
-/* 圓滑按鈕設計 */
+/* 圓滑按鈕設計加粗邊框優化 */
 .cta-group { display: flex; gap: 1.5rem; }
-.btn { padding: 1rem 2.5rem; text-decoration: none; border-radius: 30px; font-weight: 600; transition: 0.3s; display: inline-block; }
-.btn-primary { background: var(--primary); color: var(--bg-card); }
+.btn { padding: 1rem 2.5rem; text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; transition: 0.3s; display: inline-block; }
+.btn-primary { background: var(--primary); color: var(--bg-card); border: 2px solid var(--primary); }
 .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-.btn-secondary { border: 1px solid var(--primary); color: var(--primary); }
-.btn-secondary:hover { transform: translateY(-5px); background: rgba(0,0,0,0.02); }
+.btn-secondary { border: 2px solid var(--primary); color: var(--primary); }
+.btn-secondary:hover { transform: translateY(-5px); background: rgba(0,0,0,0.04); }
 body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
 .social-icons { display: flex; justify-content: center; gap: 1.2rem; margin-top: 1rem; }
@@ -214,7 +240,6 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 1rem auto 4rem; }
 .category-title { color: var(--primary); }
 
-/* 鳴謝區塊 */
 .credits-section { padding: 4rem 10%; background: var(--bg-card); transition: background-color 0.3s; }
 .credits-content { max-width: 600px; margin: 0 auto; text-align: center; }
 .credits-list { list-style: none; padding: 0; color: var(--text); }
@@ -226,8 +251,13 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
 @media (max-width: 992px) {
     .navbar { padding: 1rem 5%; }
-    .nav-links { gap: 1rem; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; }
     .main-headline { font-size: 3rem; }
     .cta-group { justify-content: center; }
+    
+    /* 手機版隱藏或調整右側導航 */
+    .side-nav {
+        right: 10px;
+        transform: scale(0.8) translateY(-50%);
+    }
 }
