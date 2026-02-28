@@ -19,6 +19,14 @@ body.dark-theme {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* 宣告自訂字型：源雲明體 */
+@font-face {
+    font-family: 'GenWanMin';
+    src: local('GenWanMin'), local('源雲明體');
+    /* 若欲透過網頁伺服器載入字型檔，請將檔案放入public並取消下方註解 */
+    /* src: url('./public/fonts/GenWanMin.ttf') format('truetype'); */
+}
+
 body {
     font-family: 'Inter', 'Hina Mincho', 'GenWanMin', '源雲明體', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     background-color: var(--bg-main);
@@ -28,8 +36,8 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.lang-content.zh { font-family: 'Inter', 'GenWanMin', '源雲明體', 'PingFang TC', sans-serif; }
-.lang-content.jp { font-family: 'Inter', 'Hina Mincho', 'Noto Sans JP', sans-serif; }
+.lang-content.zh { font-family: 'GenWanMin', '源雲明體', 'Inter', sans-serif; }
+.lang-content.jp { font-family: 'Hina Mincho', 'Noto Sans JP', 'Inter', sans-serif; }
 .lang-content.en { font-family: 'Inter', sans-serif; }
 
 body::before {
@@ -77,10 +85,10 @@ body::before {
 }
 
 .navbar .logo { 
-    font-weight: 800; 
-    font-size: 1.1rem; 
-    color: var(--primary); 
-    letter-spacing: 4px; 
+    font-family: 'Nabla', system-ui;
+    font-weight: 400; 
+    font-size: 1.4rem; 
+    letter-spacing: 2px; 
     text-transform: uppercase;
     max-width: 200px;
     opacity: 1;
@@ -124,6 +132,7 @@ body.dark-theme .navbar.shrunk {
 }
 
 .dropdown-btn {
+    font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     background: transparent;
     border: 1px solid var(--primary);
     padding: 6px 16px;
@@ -134,7 +143,6 @@ body.dark-theme .navbar.shrunk {
     gap: 8px;
     font-weight: 600;
     color: var(--primary);
-    font-family: inherit;
     font-size: 13px;
     transition: all 0.3s ease;
 }
@@ -177,6 +185,7 @@ body.dark-theme .dropdown-content {
 }
 
 .dropdown-content a {
+    font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     color: var(--text);
     padding: 12px 16px;
     text-decoration: none;
@@ -348,7 +357,7 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
 .blog-section {
     padding: 8rem 10%;
-    background: linear-gradient(to bottom, var(--white) 0%, var(--white) calc(100% - 100px), var(--bg-card) 100%);
+    background: linear-gradient(to bottom, var(--white) 0px, var(--bg-main) 100px, var(--bg-main) calc(100% - 100px), var(--bg-card) 100%);
     transition: background-color 0.3s;
 }
 
