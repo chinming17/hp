@@ -66,7 +66,7 @@ body::before {
 }
 
 .navbar.shrunk {
-    max-width: 320px; /* 給予一個明確縮小數值 */
+    max-width: 160px; /* 從320px縮小，讓膠囊更貼合內容 */
     margin: 20px 20px 0 auto;
     padding: 0.6rem 1.2rem;
     background: rgba(255, 255, 255, 0.9);
@@ -293,7 +293,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transform: scale(1.08) rotate(3deg); /* 放大並微微旋轉增添靈動感 */
 }
 
-.profile-name { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary); }
+/* 更改名字字型為 Sassy Frass，並稍微加大字級 */
+.profile-name { font-family: 'Sassy Frass', cursive; font-size: 3rem; margin-bottom: 0.5rem; color: var(--primary); }
 
 .content-area { flex: 1; }
 .main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
