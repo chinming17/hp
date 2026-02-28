@@ -105,3 +105,94 @@ body {
     .cta-group { justify-content: center; }
     .content-area { order: -1; } /* 讓文字在手機上排在圖片上方 */
 }
+
+/* 履歷區塊樣式 */
+.resume-section {
+    padding: 5rem 10%;
+    background-color: var(--white);
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.underline {
+    width: 50px;
+    height: 3px;
+    background: var(--primary);
+    margin: 10px auto;
+}
+
+.resume-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.resume-item {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.item-detail {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid var(--bg-main);
+}
+
+.item-detail h4 {
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #999;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.job-title {
+    font-weight: 600;
+    color: #555;
+    margin: 5px 0;
+}
+
+.item-detail ul {
+    margin-left: 1.2rem;
+    margin-top: 10px;
+    color: #666;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-grid span {
+    background: var(--bg-main);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* 讓網頁捲動變得平滑 */
+html {
+    scroll-behavior: smooth;
+}
