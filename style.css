@@ -38,7 +38,7 @@ body::before {
     z-index: 9999;
 }
 
-/* --- 上方膠囊導覽列 (平滑縮放動畫優化) --- */
+/* --- 上方膠囊導覽列 --- */
 .navbar {
     display: flex; 
     justify-content: space-between; 
@@ -46,7 +46,7 @@ body::before {
     padding: 0.8rem 2rem; 
     margin: 20px auto 0;
     width: 90%;
-    max-width: 1200px; /* 改用 max-width 控制動畫 */
+    max-width: 1200px;
     border-radius: 50px;
     
     background: rgba(255, 255, 255, 0.75); 
@@ -58,7 +58,6 @@ body::before {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    /* 確保所有變形都有絲滑的貝茲曲線過渡 */
     transition: max-width 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
                 padding 0.5s ease, 
                 margin 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
@@ -66,7 +65,7 @@ body::before {
 }
 
 .navbar.shrunk {
-    max-width: 160px; /* 從320px縮小，讓膠囊更貼合內容 */
+    max-width: 160px;
     margin: 20px 20px 0 auto;
     padding: 0.6rem 1.2rem;
     background: rgba(255, 255, 255, 0.9);
@@ -75,9 +74,10 @@ body::before {
 
 .navbar .logo { 
     font-weight: 800; 
-    font-size: 1.2rem; 
+    font-size: 1.1rem; 
     color: var(--primary); 
-    letter-spacing: 1px; 
+    letter-spacing: 4px; 
+    text-transform: uppercase;
     max-width: 200px;
     opacity: 1;
     overflow: hidden;
@@ -140,6 +140,16 @@ body.dark-theme .navbar.shrunk {
     color: var(--bg-card);
 }
 
+/* 縮放時隱藏文字與箭頭，僅保留國旗圖示 */
+.navbar.shrunk .dropdown-btn #current-lang-text,
+.navbar.shrunk .dropdown-btn .fa-caret-down {
+    display: none;
+}
+.navbar.shrunk .dropdown-btn {
+    padding: 6px 10px;
+    gap: 0;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -197,7 +207,7 @@ body.dark-theme .dropdown-content {
 body.dark-theme .dropdown-btn { border-color: var(--primary); color: var(--primary); }
 body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--bg-card); }
 
-/* --- 右側圓點指示器導航 (平滑展開文字動畫) --- */
+/* --- 右側圓點指示器導航 --- */
 .dot-nav {
     position: fixed;
     right: 30px;
@@ -215,7 +225,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     align-items: center;
     justify-content: flex-end;
     text-decoration: none;
-    height: 30px; /* 增加點擊範圍 */
+    height: 30px; 
 }
 
 .dot {
@@ -229,26 +239,26 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 
 .dot-label {
     position: absolute;
-    right: 25px; /* 推至圓點左側 */
+    right: 25px; 
     font-weight: 700;
     font-size: 0.85rem;
     color: var(--primary);
     opacity: 0;
-    visibility: hidden; /* 平時隱藏 */
-    transform: translateX(10px); /* 預設往右微移，實現滑出效果 */
+    visibility: hidden; 
+    transform: translateX(10px); 
     transition: all 0.3s cubic-bezier(0.25, 1, 0.3, 1);
     white-space: nowrap;
 }
 
 .dot-nav-item:hover .dot {
     opacity: 1;
-    transform: scale(1.5); /* 圓點放大 */
+    transform: scale(1.5); 
 }
 
 .dot-nav-item:hover .dot-label {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0); /* 文字平滑向左滑出 */
+    transform: translateX(0); 
 }
 
 .hero-container {
@@ -256,18 +266,17 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     min-height: 90vh;
     align-items: center;
     justify-content: center;
-    padding: 4rem 10%;
+    padding: 8rem 10% 4rem; /* 增加上方留白，避免重疊 */
     gap: 6rem;
 }
 
-/* --- 卡片立體感增強與懸浮特效 --- */
+/* --- 卡片立體感與懸浮特效 --- */
 .profile-card {
     background: var(--bg-card);
     padding: 3rem;
     border-radius: 24px;
     text-align: center;
     flex: 0 0 380px;
-    /* 多層次立體陰影 */
     box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
     transform: translateY(0);
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.3s;
@@ -278,7 +287,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     box-shadow: 0 30px 50px rgba(0,0,0,0.12), 0 5px 15px rgba(0,0,0,0.06);
 }
 
-/* 頭像懸浮放大特效 */
 .profile-img { 
     width: 180px; 
     height: 180px; 
@@ -290,18 +298,37 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 }
 
 .profile-card:hover .profile-img {
-    transform: scale(1.08) rotate(3deg); /* 放大並微微旋轉增添靈動感 */
+    transform: scale(1.08) rotate(3deg); 
 }
 
-/* 更改名字字型為 Sassy Frass，並稍微加大字級 */
-.profile-name { font-family: 'Sassy Frass', cursive; font-size: 3rem; margin-bottom: 0.5rem; color: var(--primary); }
+/* 更改字型大小、確保不加粗 */
+.profile-name { 
+    font-family: 'Sassy Frass', cursive; 
+    font-size: 4.5rem; 
+    font-weight: 400; 
+    margin-bottom: 0.5rem; 
+    color: var(--primary); 
+    line-height: 1;
+}
 
 .content-area { flex: 1; }
 .main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
 .bio-text { font-size: 1.1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 550px; }
 
 .cta-group { display: flex; gap: 1.5rem; }
-.btn { padding: 1rem 2.5rem; text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; transition: 0.3s; display: inline-block; }
+/* 按鈕增加最小寬度，以固定大小容納各語言 */
+.btn { 
+    padding: 1rem 2rem; 
+    min-width: 160px; 
+    text-align: center;
+    text-decoration: none; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    font-size: 0.95rem; 
+    letter-spacing: 0.5px; 
+    transition: 0.3s; 
+    display: inline-block; 
+}
 .btn-primary { background: var(--primary); color: var(--bg-card); border: 2px solid var(--primary); }
 .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 .btn-secondary { border: 2px solid var(--primary); color: var(--primary); }
@@ -326,9 +353,10 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
 .footer { padding: 4rem; text-align: center; background: var(--bg-card); color: var(--text); font-size: 0.8rem; transition: background-color 0.3s; }
 
+/* 手機版設定，防止膠囊與方塊重疊 */
 @media (max-width: 992px) {
     .navbar { padding: 1rem 5%; }
-    .hero-container { flex-direction: column; text-align: center; gap: 3rem; }
+    .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     .main-headline { font-size: 3rem; }
     .cta-group { justify-content: center; }
     .dot-nav { display: none; }
