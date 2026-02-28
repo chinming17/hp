@@ -16,19 +16,33 @@
     <meta name="author" content="Chinming Chan">
     <meta name="description" content="Chinming Chan的個人作品集。展示在大阪的專業諮詢與管理實務經驗。">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<nav class="side-nav">
+    <a href="#about" class="side-nav-item">
+        <span class="lang-content zh">關於我</span>
+        <span class="lang-content jp" style="display:none;">自己紹介</span>
+        <span class="lang-content en" style="display:none;">ABOUT</span>
+    </a>
+    <a href="#resume" class="side-nav-item">
+        <span class="lang-content zh">履歷</span>
+        <span class="lang-content jp" style="display:none;">履歴書</span>
+        <span class="lang-content en" style="display:none;">RÉSUMÉ</span>
+    </a>
+    <a href="#credits" class="side-nav-item">
+        <span class="lang-content zh">鳴謝</span>
+        <span class="lang-content jp" style="display:none;">謝辞</span>
+        <span class="lang-content en" style="display:none;">CREDITS</span>
+    </a>
+</nav>
+
 <nav class="navbar">
     <div class="logo">CC BLOG</div>
     <div class="nav-links">
-        <a href="#about" class="nav-item lang-content zh">關於我</a>
-        <a href="#about" class="nav-item lang-content jp" style="display:none;">自己紹介</a>
-        <a href="#about" class="nav-item lang-content en" style="display:none;">ABOUT ME</a>
-        
         <div class="nav-controls">
             <div class="lang-dropdown">
                 <button class="dropdown-btn" onclick="toggleLangMenu()">
@@ -69,27 +83,47 @@
         </section>
 
         <section class="content-area">
-            <h1 class="main-headline">HERE'S MY<br>JOURNEY &<br>EXPERIENCE.</h1>
+            <h1 class="main-headline">
+                <span class="lang-content zh">這是我的<br>旅程與<br>經歷。</span>
+                <span class="lang-content jp" style="display:none;">これまでの<br>歩みと<br>経験。</span>
+                <span class="lang-content en" style="display:none;">HERE'S MY<br>JOURNEY &<br>EXPERIENCE.</span>
+            </h1>
             
             <p class="bio-text lang-content zh">待填寫</p>
             <p class="bio-text lang-content jp" style="display:none;">待填寫</p>
             <p class="bio-text lang-content en" style="display:none;">To be filled</p>
 
             <div class="cta-group">
-                <a href="#resume" class="btn btn-primary">RÉSUMÉ</a>
-                <a href="#" class="btn btn-secondary">MY BLOGS</a>
+                <a href="#resume" class="btn btn-primary">
+                    <span class="lang-content zh">履歷</span>
+                    <span class="lang-content jp" style="display:none;">履歴書</span>
+                    <span class="lang-content en" style="display:none;">RÉSUMÉ</span>
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <span class="lang-content zh">我的部落格</span>
+                    <span class="lang-content jp" style="display:none;">ブログ</span>
+                    <span class="lang-content en" style="display:none;">MY BLOGS</span>
+                </a>
             </div>
         </section>
     </main>
 
     <section id="resume" class="resume-section">
         <div class="resume-header">
-            <h2 class="section-title">RÉSUMÉ</h2>
+            <h2 class="section-title">
+                <span class="lang-content zh">履歷</span>
+                <span class="lang-content jp" style="display:none;">履歴書</span>
+                <span class="lang-content en" style="display:none;">RÉSUMÉ</span>
+            </h2>
             <div class="underline"></div>
         </div>
         <div class="resume-content">
             <div class="resume-item">
-                <h3 class="category-title">EDUCATION</h3>
+                <h3 class="category-title">
+                    <span class="lang-content zh">教育背景</span>
+                    <span class="lang-content jp" style="display:none;">学歴</span>
+                    <span class="lang-content en" style="display:none;">EDUCATION</span>
+                </h3>
                 <div class="item-detail">
                     <span class="date">待填寫</span>
                     <h4>待填寫</h4>
@@ -99,7 +133,11 @@
                 </div>
             </div>
             <div class="resume-item">
-                <h3 class="category-title">EXPERIENCE</h3>
+                <h3 class="category-title">
+                    <span class="lang-content zh">工作經歷</span>
+                    <span class="lang-content jp" style="display:none;">職歴</span>
+                    <span class="lang-content en" style="display:none;">EXPERIENCE</span>
+                </h3>
                 <div class="item-detail">
                     <span class="date">待填寫</span>
                     <h4>待填寫</h4>
@@ -110,16 +148,22 @@
                 </div>
             </div>
             <div class="resume-item">
-                <h3 class="category-title">SKILLS</h3>
+                <h3 class="category-title">
+                    <span class="lang-content zh">專業技能</span>
+                    <span class="lang-content jp" style="display:none;">スキル</span>
+                    <span class="lang-content en" style="display:none;">SKILLS</span>
+                </h3>
                 <div class="skills-grid"><span>待填寫</span><span>待填寫</span></div>
             </div>
         </div>
     </section>
 
     <section id="credits" class="credits-section">
-        <h2 class="section-title lang-content zh">鳴謝</h2>
-        <h2 class="section-title lang-content jp" style="display:none;">謝辞</h2>
-        <h2 class="section-title lang-content en" style="display:none;">Acknowledgements</h2>
+        <h2 class="section-title">
+            <span class="lang-content zh">鳴謝</span>
+            <span class="lang-content jp" style="display:none;">謝辞</span>
+            <span class="lang-content en" style="display:none;">CREDITS</span>
+        </h2>
         <div class="underline"></div>
         <div class="credits-content">
             <ul class="credits-list">
@@ -130,7 +174,11 @@
     </section>
 
     <footer class="footer">
-        <p>© 2026 by Chinming Chan. All rights reserved.</p>
+        <p>
+            <span class="lang-content zh">© 2026 由 Chinming Chan 保留所有權利。</span>
+            <span class="lang-content jp" style="display:none;">© 2026 Chinming Chan. All rights reserved.</span>
+            <span class="lang-content en" style="display:none;">© 2026 by Chinming Chan. All rights reserved.</span>
+        </p>
     </footer>
 
     <script>
@@ -157,7 +205,12 @@
         document.querySelectorAll('.lang-content').forEach(el => {
             el.style.display = 'none';
             if (el.classList.contains(lang)) {
-                el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
+                // 針對不同標籤給予合適的 display 屬性
+                if (el.tagName === 'A' || el.tagName === 'SPAN') {
+                    el.style.display = 'inline-block';
+                } else {
+                    el.style.display = 'block';
+                }
             }
         });
     }
@@ -179,7 +232,6 @@
         }
     }
 
-    // 頁面載入時檢查深色模式(結合手動設定、系統偏好與當地時間)
     window.onload = function() {
         const savedTheme = localStorage.getItem('theme');
         let shouldBeDark = false;
@@ -187,12 +239,9 @@
         if (savedTheme) {
             shouldBeDark = (savedTheme === 'dark');
         } else {
-            // 檢查裝置系統是否偏好深色模式
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            // 檢查當地時間是否為日落後(假設18:00到06:00之間)
             const hour = new Date().getHours();
             const isNight = hour >= 18 || hour < 6;
-            
             shouldBeDark = prefersDark || isNight;
         }
 
