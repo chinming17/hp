@@ -20,13 +20,17 @@ body.dark-theme {
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', 'Noto Sans TC', 'Noto Sans JP', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    font-family: 'Inter', 'Hina Mincho', 'GenWanMin', '源雲明體', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     background-color: var(--bg-main);
     color: var(--text);
     line-height: 1.6;
     position: relative;
     transition: background-color 0.3s, color 0.3s;
 }
+
+.lang-content.zh { font-family: 'Inter', 'GenWanMin', '源雲明體', 'PingFang TC', sans-serif; }
+.lang-content.jp { font-family: 'Inter', 'Hina Mincho', 'Noto Sans JP', sans-serif; }
+.lang-content.en { font-family: 'Inter', sans-serif; }
 
 body::before {
     content: "";
@@ -140,7 +144,6 @@ body.dark-theme .navbar.shrunk {
     color: var(--bg-card);
 }
 
-/* 縮放時隱藏文字與箭頭，僅保留國旗圖示 */
 .navbar.shrunk .dropdown-btn #current-lang-text,
 .navbar.shrunk .dropdown-btn .fa-caret-down {
     display: none;
@@ -320,7 +323,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     min-width: 160px; 
     text-align: center;
     text-decoration: none; 
-    border-radius: 30px; 
+    border-radius: 24px; 
     font-weight: 700; 
     font-size: 0.95rem; 
     letter-spacing: 0.5px; 
@@ -339,8 +342,18 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
 .resume-section { 
     padding: 8rem 10%; 
-    background: linear-gradient(to bottom, var(--bg-main) 0px, var(--white) 100px, var(--white) calc(100% - 100px), var(--bg-card) 100%);
+    background: linear-gradient(to bottom, var(--bg-main) 0px, var(--white) 100px, var(--white) 100%);
+    transition: background-color 0.3s;
 }
+
+.blog-section {
+    padding: 8rem 10%;
+    background: linear-gradient(to bottom, var(--white) 0%, var(--white) calc(100% - 100px), var(--bg-card) 100%);
+    transition: background-color 0.3s;
+}
+
+.blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
+
 .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 1rem auto 4rem; }
 .category-title { color: var(--primary); }
