@@ -1,6 +1,6 @@
 :root {
-    --bg-main: #e6dace;      /* 最初的米色背景 */
-    --bg-card: #f4ece6;      /* 卡片淡米色 */
+    --bg-main: #e6dace;      /* 商務米色 */
+    --bg-card: #f4ece6;      
     --primary: #2c3e50;      /* 專業深藍 */
     --text: #333333;
     --white: #ffffff;
@@ -10,87 +10,118 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* --- 1. 復古噪點效果與基礎設定 (修正核心) --- */
+/* --- 1. 復古噪點背景 --- */
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-main);
     color: var(--text);
     line-height: 1.6;
-    position: relative; /* 確保偽元素定位正確 */
+    position: relative;
 }
 
-/* 生成淡淡顆粒質感的層 */
 body::before {
     content: "";
-    position: fixed; /* 固定在視窗上 */
+    position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* 使用微量噪點圖片或生成 SVG */
     background: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.04; /* 非常微弱的顆粒感，展現高級質感 */
-    pointer-events: none; /* 確保不會阻擋點擊 */
-    z-index: 9999; /* 放在最上層 */
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-/* --- 導覽列 --- */
+/* --- 2. 導覽列 (Navbar) --- */
 .navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 10%; background: var(--white); position: sticky; top: 0; z-index: 1000;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem 10%; 
+    background: var(--white); 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
+
 .logo { font-weight: 600; font-size: 1.2rem; color: var(--primary); }
 
-/* --- 膠囊式語系切換器 --- */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* 連結與切換器之間的間距 */
+}
+
+/* --- 3. 優化後的 ABOUT ME 連結 --- */
+.nav-item {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 5px 0;
+    transition: 0.3s all ease;
+}
+
+.nav-item:hover {
+    transform: translateY(-2px); /* 向上微跳 */
+    color: var(--accent);
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--primary);
+    transition: 0.3s all ease;
+    transform: translateX(-50%);
+}
+
+.nav-item:hover::after {
+    width: 20px; /* 優雅短底線 */
+}
+
+/* --- 4. 膠囊式語系切換器 --- */
 .lang-nav {
-    display: flex; background: var(--bg-card); border-radius: 30px; padding: 4px;
+    display: flex; 
+    background: var(--bg-card); 
+    border-radius: 30px; 
+    padding: 4px;
     border: 1px solid rgba(0,0,0,0.05);
 }
-.lang-btn {
-    background: none; border: none; padding: 6px 16px; font-size: 13px;
-    font-weight: 600; color: #888; cursor: pointer; transition: 0.3s; border-radius: 20px;
-}
-.lang-btn.active { background: var(--primary); color: var(--white); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.lang-btn:hover:not(.active) { color: var(--primary); }
 
-/* --- 主容器 --- */
+.lang-btn {
+    background: none; 
+    border: none; 
+    padding: 6px 14px; 
+    font-size: 12px;
+    font-weight: 600; 
+    color: #888; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    border-radius: 20px;
+}
+
+.lang-btn.active { 
+    background: var(--primary); 
+    color: var(--white); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+/* --- 5. 主內容與按鈕動畫 (保持原本水準) --- */
 .hero-container { display: flex; min-height: 90vh; align-items: center; justify-content: center; padding: 4rem 10%; gap: 4rem; }
 .profile-card { background: var(--bg-card); padding: 3rem; border-radius: 20px; text-align: center; flex: 1; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 5px solid var(--white); margin-bottom: 1.5rem; transition: 0.3s; }
 .profile-img:hover { transform: scale(1.05); }
 
-.social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
-.icon-link { color: var(--primary); font-size: 1.4rem; transition: 0.3s; text-decoration: none; }
-.icon-link:hover { transform: translateY(-3px); color: var(--accent); }
-
-/* --- 內容區 --- */
-.content-area { flex: 1.5; }
-.main-headline { font-family: 'Playfair Display', serif; font-size: 4.5rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
-.bio-text { font-size: 1.1rem; color: #444; margin-bottom: 2.5rem; max-width: 600px; }
-
-/* --- 按鈕上跳動畫 --- */
-.cta-group { display: flex; gap: 1.5rem; }
 .btn { padding: 1rem 2.5rem; text-decoration: none; border-radius: 5px; font-weight: 600; transition: 0.3s all ease; display: inline-block; }
 .btn-primary { background: var(--primary); color: var(--white); }
 .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.btn-secondary { border: 1px solid var(--primary); color: var(--primary); }
-.btn-secondary:hover { transform: translateY(-5px); background: rgba(0,0,0,0.02); }
 
-/* --- 履歷區塊 --- */
-.resume-section { padding: 6rem 10%; background: var(--white); }
-.section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary); }
-.underline { width: 60px; height: 4px; background: var(--primary); margin: 15px auto 4rem; }
-.resume-content { max-width: 850px; margin: 0 auto; }
-.resume-item { margin-bottom: 4rem; }
-.category-title { font-size: 0.9rem; letter-spacing: 3px; color: #999; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; }
-.item-detail { margin-bottom: 2.5rem; padding-left: 25px; border-left: 2px solid var(--bg-main); }
-.item-detail h4 { font-size: 1.4rem; color: var(--primary); }
-.date { font-size: 0.85rem; color: #aaa; margin-bottom: 8px; display: block; }
-.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-.skills-grid span { background: var(--bg-main); padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
-
-.footer { padding: 4rem; text-align: center; background: var(--bg-card); color: #888; font-size: 0.8rem; }
-
+/* 響應式設定 */
 @media (max-width: 992px) {
-    .hero-container { flex-direction: column; text-align: center; padding: 4rem 5%; }
-    .main-headline { font-size: 3rem; }
-    .cta-group { justify-content: center; }
+    .nav-links { flex-direction: column; gap: 0.5rem; }
+    .hero-container { flex-direction: column; text-align: center; }
 }
