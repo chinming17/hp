@@ -112,14 +112,25 @@
     </footer>
 
     <script>
-    function setLang(lang) {
-        document.querySelectorAll('.lang-content').forEach(el => {
-            el.style.display = 'none';
-            if (el.classList.contains(lang)) el.style.display = 'block';
-        });
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-    }
+   function setLang(lang) {
+    // 切換所有帶有 lang-content 的元素
+    document.querySelectorAll('.lang-content').forEach(el => {
+        el.style.display = 'none';
+        if (el.classList.contains(lang)) {
+            // 根據元素類型決定顯示方式 (a 標籤用 inline-block, p 或 ul 用 block)
+            el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
+        }
+    });
+
+    // 更新按鈕 active 狀態
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        // 如果按鈕文字包含對應語系則設為 active (這是一個簡單的判定法)
+        if (btn.getAttribute('onclick').includes(lang)) {
+            btn.classList.add('active');
+        }
+    });
+}
     </script>
 </body>
 </html>
