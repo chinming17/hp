@@ -10,20 +10,20 @@
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">CC BLOG</div>
-    <div class="nav-links">
-        <a href="#about" class="nav-item">ABOUT ME</a>
-        
-        <div class="lang-switcher">
-            <div class="lang-nav">
-                <button onclick="setLang('zh')" class="lang-btn active">繁</button>
-                <button onclick="setLang('jp')" class="lang-btn">日</button>
-                <button onclick="setLang('en')" class="lang-btn">EN</button>
+    <nav class="navbar">
+        <div class="logo">CC BLOG</div>
+        <div class="nav-links">
+            <a href="#about" class="nav-item">ABOUT ME</a>
+            
+            <div class="lang-switcher">
+                <div class="lang-nav">
+                    <button onclick="setLang('zh')" class="lang-btn active">繁</button>
+                    <button onclick="setLang('jp')" class="lang-btn">日</button>
+                    <button onclick="setLang('en')" class="lang-btn">EN</button>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <main id="about" class="hero-container">
         <section class="profile-card">
@@ -64,7 +64,6 @@
             <h2 class="section-title">RÉSUMÉ</h2>
             <div class="underline"></div>
         </div>
-
         <div class="resume-content">
             <div class="resume-item">
                 <h3 class="category-title">EDUCATION</h3>
@@ -76,7 +75,6 @@
                     <p class="lang-content en" style="display:none;">To be filled</p>
                 </div>
             </div>
-
             <div class="resume-item">
                 <h3 class="category-title">EXPERIENCE</h3>
                 <div class="item-detail">
@@ -86,16 +84,11 @@
                     <p class="job-title lang-content jp" style="display:none;">待填寫</p>
                     <p class="job-title lang-content en" style="display:none;">To be filled</p>
                     <ul class="lang-content zh"><li>待填寫</li></ul>
-                    <ul class="lang-content jp" style="display:none;"><li>待填寫</li></ul>
-                    <ul class="lang-content en" style="display:none;"><li>To be filled</li></ul>
                 </div>
             </div>
-
             <div class="resume-item">
                 <h3 class="category-title">SKILLS</h3>
-                <div class="skills-grid">
-                    <span>待填寫</span><span>待填寫</span><span>待填寫</span>
-                </div>
+                <div class="skills-grid"><span>待填寫</span><span>待填寫</span></div>
             </div>
         </div>
     </section>
@@ -108,12 +101,10 @@
     function setLang(lang) {
         document.querySelectorAll('.lang-content').forEach(el => {
             el.style.display = 'none';
-            if (el.classList.contains(lang)) {
-                el.style.display = (el.tagName === 'UL') ? 'block' : 'block';
-            }
+            if (el.classList.contains(lang)) el.style.display = 'block';
         });
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        event.currentTarget.classList.add('active');
     }
     </script>
 </body>
