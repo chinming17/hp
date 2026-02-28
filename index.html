@@ -29,22 +29,21 @@
         <a href="#about" class="nav-item lang-content jp" style="display:none;">自己紹介</a>
         <a href="#about" class="nav-item lang-content en" style="display:none;">ABOUT ME</a>
         
-       <div class="nav-controls">
-    <div class="lang-dropdown">
-        <button class="dropdown-btn" onclick="toggleLangMenu()">
-            <i class="fa-solid fa-globe"></i> <span id="current-lang-text">繁中</span> <i class="fa-solid fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="langMenu">
-            <a href="#" onclick="setLang('zh', '繁體中文'); return false;"><img src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon"> 繁體中文</a>
-            <a href="#" onclick="setLang('jp', '日本語'); return false;"><img src="./public/Flags-Rounded_Rectangle/Japan.png" class="flag-icon"> 日本語</a>
-            <a href="#" onclick="setLang('en', 'English'); return false;"><img src="./public/Flags-Rounded_Rectangle/United-States.png" class="flag-icon"> English</a>
-        </div>
-    </div>
+        <div class="nav-controls">
+            <div class="lang-dropdown">
+                <button class="dropdown-btn" onclick="toggleLangMenu()">
+                    <i class="fa-solid fa-globe"></i> <span id="current-lang-text">繁中</span> <i class="fa-solid fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="langMenu">
+                    <a href="#" onclick="setLang('zh', '繁中'); return false;"><img src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon"> 繁體中文</a>
+                    <a href="#" onclick="setLang('jp', '日本語'); return false;"><img src="./public/Flags-Rounded_Rectangle/Japan.png" class="flag-icon"> 日本語</a>
+                    <a href="#" onclick="setLang('en', 'EN'); return false;"><img src="./public/Flags-Rounded_Rectangle/United-States.png" class="flag-icon"> English</a>
+                </div>
+            </div>
 
-    <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
-        <i class="fa-solid fa-moon"></i>
-    </button>
-</div>
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
+                <i class="fa-solid fa-moon"></i>
+            </button>
         </div>
     </div>
 </nav>
@@ -122,25 +121,65 @@
     </footer>
 
     <script>
-   function setLang(lang) {
-    // 切換所有帶有 lang-content 的元素
-    document.querySelectorAll('.lang-content').forEach(el => {
-        el.style.display = 'none';
-        if (el.classList.contains(lang)) {
-            // 根據元素類型決定顯示方式 (a 標籤用 inline-block, p 或 ul 用 block)
-            el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
-        }
-    });
+    // 切換語言下拉選單顯示狀態
+    function toggleLangMenu() {
+        document.getElementById("langMenu").classList.toggle("show");
+    }
 
-    // 更新按鈕 active 狀態
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        // 如果按鈕文字包含對應語系則設為 active (這是一個簡單的判定法)
-        if (btn.getAttribute('onclick').includes(lang)) {
-            btn.classList.add('active');
+    // 點擊畫面其他地方時關閉下拉選單
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn') && !event.target.closest('.dropdown-btn')) {
+            let dropdowns = document.getElementsByClassName("dropdown-content");
+            for (let i = 0; i < dropdowns.length; i++) {
+                let openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
         }
-    });
-}
+    }
+
+    // 更新語言設定與按鈕顯示文字
+    function setLang(lang, text) {
+        // 更改按鈕上的文字
+        document.getElementById('current-lang-text').innerText = text;
+        // 關閉選單
+        document.getElementById("langMenu").classList.remove("show");
+        
+        // 切換所有帶有 lang-content 的元素
+        document.querySelectorAll('.lang-content').forEach(el => {
+            el.style.display = 'none';
+            if (el.classList.contains(lang)) {
+                el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
+            }
+        });
+    }
+
+    // 深色模式切換與儲存狀態
+    function toggleTheme() {
+        const body = document.body;
+        body.classList.toggle('dark-theme');
+        const themeBtn = document.getElementById('theme-toggle');
+        const icon = themeBtn.querySelector('i');
+        
+        if (body.classList.contains('dark-theme')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun'); // 切換成太陽圖示
+            localStorage.setItem('theme', 'dark');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon'); // 切換回月亮圖示
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // 頁面載入時檢查是否曾開啟深色模式
+    window.onload = function() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            document.querySelector('#theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+        }
+    };
     </script>
 </body>
 </html>
