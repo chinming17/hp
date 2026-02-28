@@ -38,19 +38,104 @@ body::before {
     z-index: 9999;
 }
 
+/* --- 懸浮膠囊導覽列 (預設展開狀態) --- */
 .navbar {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    padding: 1.5rem 10%; 
+    padding: 0.8rem 2rem; 
+    margin: 20px auto 0;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 50px;
     
-    /* 完全透明無陰影 */
-    background: transparent; 
-    box-shadow: none;
+    /* 溫暖毛玻璃配色：微透明白 + 模糊濾鏡 + 極細白邊 */
+    background: rgba(255, 255, 255, 0.75); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     
-    position: absolute; /* 讓導覽列隨著畫面滾動上去，不固定在頂部 */
+    position: fixed; /* 改為fixed以實現平滑縮放動畫 */
     top: 0; left: 0; right: 0;
     z-index: 1000;
+    /* 加入寬度、位置與邊距的絲滑過渡動畫 */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+/* --- 導覽列縮小為右側藥丸狀態 (.shrunk) --- */
+.navbar.shrunk {
+    width: auto;
+    margin: 20px 20px 0 auto; /* 貼齊右側 */
+    left: auto;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.9); /* 縮小時稍微提高不透明度 */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo { 
+    font-weight: 800; 
+    font-size: 1.2rem; 
+    color: var(--primary); 
+    letter-spacing: 1px; 
+    transition: all 0.4s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 縮小時隱藏 Logo */
+.navbar.shrunk .logo {
+    width: 0;
+    opacity: 0;
+    margin: 0;
+}
+
+/* --- 深色模式導覽列適配 --- */
+body.dark-theme .navbar {
+    background: rgba(40, 40, 40, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.dark-theme .navbar.shrunk {
+    background: rgba(30, 30, 30, 0.95);
+}
+
+/* --- 右側控制區與極簡按鈕配色優化 --- */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dropdown-btn {
+    /* 移除實體底色，改用主色調細邊框 */
+    background: transparent;
+    border: 1px solid var(--primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+/* 滑鼠懸停時反轉顏色 */
+.dropdown-btn:hover {
+    background: var(--primary);
+    color: var(--bg-card);
+}
+
+body.dark-theme .dropdown-btn {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+body.dark-theme .dropdown-btn:hover {
+    background: var(--primary);
+    color: var(--bg-card);
 }
 
 /* 確保深色模式下的毛玻璃效果也正確 */
