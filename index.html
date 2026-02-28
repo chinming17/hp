@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinming | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -14,6 +14,11 @@
         <div class="logo">CC BLOG</div>
         <div class="nav-links">
             <a href="#about">ABOUT ME</a>
+            <div class="lang-switcher">
+                <button onclick="setLang('zh')" class="lang-btn active">繁</button>
+                <button onclick="setLang('jp')" class="lang-btn">日</button>
+                <button onclick="setLang('en')" class="lang-btn">EN</button>
+            </div>
         </div>
     </nav>
 
@@ -22,21 +27,28 @@
             <div class="profile-img-container">
                 <img src="./public/avatar.png" alt="Chinming" class="profile-img">
             </div>
-            <h2 class="profile-name">Chinming Chan</h2> <p class="profile-title">Consulting Representative</p> <div class="social-icons">
-            <a href="https://www.linkedin.com/in/YOUR_ID" target="_blank" class="icon-link">
-            <i class="fa-brands fa-linkedin"></i>
+            <h2 class="profile-name">Chinming Chan</h2>
+            <p class="profile-title lang-content zh">待填寫</p>
+            <p class="profile-title lang-content jp" style="display:none;">待填寫</p>
+            <p class="profile-title lang-content en" style="display:none;">To be filled</p>
+            
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/YOUR_ID" target="_blank" class="icon-link">
+                    <i class="fa-brands fa-linkedin"></i>
                 </a>
                 <a href="mailto:cchinming17@gmail.com" class="icon-link">
-                <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
         </section>
 
         <section class="content-area">
             <h1 class="main-headline">HERE'S MY<br>JOURNEY &<br>EXPERIENCE.</h1>
-            <p class="bio-text">
-                待填寫
-            </p>
+            
+            <p class="bio-text lang-content zh">待填寫</p>
+            <p class="bio-text lang-content jp" style="display:none;">待填寫</p>
+            <p class="bio-text lang-content en" style="display:none;">To be filled</p>
+
             <div class="cta-group">
                 <a href="#resume" class="btn btn-primary">RÉSUMÉ</a>
                 <a href="#" class="btn btn-secondary">MY BLOGS</a>
@@ -54,52 +66,52 @@
             <div class="resume-item">
                 <h3 class="category-title">EDUCATION</h3>
                 <div class="item-detail">
-                    <span class="date">2018 - 2023</span>
-                    <h4>桃山學院大學 (Momoyama Gakuin University)</h4>
-                    <p>學士學位 畢業</p>
+                    <span class="date">待填寫</span>
+                    <h4>待填寫</h4>
+                    <p class="lang-content zh">待填寫</p>
+                    <p class="lang-content jp" style="display:none;">待填寫</p>
+                    <p class="lang-content en" style="display:none;">To be filled</p>
                 </div>
             </div>
 
             <div class="resume-item">
                 <h3 class="category-title">EXPERIENCE</h3>
-                
-                <div class="item-detail">
-                    <span class="date">2024 - Present</span>
-                    <h4>待填寫</h4>
-                    <p class="job-title">Consulting Representative (諮詢代表)</p>
-                    <ul>
-                        <li>待填寫</li>
-                        <li>待填寫</li>
-                    </ul>
-                </div>
-
                 <div class="item-detail">
                     <span class="date">待填寫</span>
                     <h4>待填寫</h4>
-                    <p class="job-title">待填寫</p>
-                    <ul>
-                        <li>待填寫</li>
-                        <li>待填寫</li>
-                    </ul>
+                    <p class="job-title lang-content zh">待填寫</p>
+                    <p class="job-title lang-content jp" style="display:none;">待填寫</p>
+                    <p class="job-title lang-content en" style="display:none;">To be filled</p>
+                    <ul class="lang-content zh"><li>待填寫</li></ul>
+                    <ul class="lang-content jp" style="display:none;"><li>待填寫</li></ul>
+                    <ul class="lang-content en" style="display:none;"><li>To be filled</li></ul>
                 </div>
             </div>
 
             <div class="resume-item">
                 <h3 class="category-title">SKILLS</h3>
                 <div class="skills-grid">
-                    <span>繁體中文</span>
-                    <span>日本語 (JLPT 高階)</span>
-                    <span>English</span>
-                    <span>商務禮儀</span>
-                    <span>日本勞動法諮詢</span>
+                    <span>待填寫</span><span>待填寫</span><span>待填寫</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="footer">
+    <footer class="footer">
         <p>© 2026 by Chinming Chan. All rights reserved.</p>
     </footer>
 
+    <script>
+    function setLang(lang) {
+        document.querySelectorAll('.lang-content').forEach(el => {
+            el.style.display = 'none';
+            if (el.classList.contains(lang)) {
+                el.style.display = (el.tagName === 'UL') ? 'block' : 'block';
+            }
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+    </script>
 </body>
 </html>
