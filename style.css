@@ -29,11 +29,13 @@ body {
 }
 
 .logo { font-weight: 600; font-size: 1.2rem; }
+/* 微調導覽列連結間距 */
 .nav-links a {
     text-decoration: none;
     color: var(--text);
-    margin-left: 2rem;
-    font-size: 0.9rem;
+    margin-left: 2.5rem; /* 稍微增加間距，讓剩餘的兩個選項更平衡 */
+    font-size: 0.95rem;
+    font-weight: 500;
     transition: 0.3s;
 }
 .nav-links a:hover { color: var(--primary); }
