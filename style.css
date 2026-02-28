@@ -19,15 +19,15 @@ body.dark-theme {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* 宣告自訂字型：源雲明體 */
+/* 宣告自訂字型：Noto Serif TC */
 @font-face {
-    font-family:'GenWanMin';
-    src:local('GenWanMin'),local('源雲明體'),
-        url('./public/fonts/GenWanMin.woff2') format('woff2');
+    font-family:'Noto Serif TC';
+    src:local('Noto Serif TC'),local('Noto Serif TC'),
+        url('./public/fonts/Noto Serif TC.woff2') format('woff2');
 }
 
 body {
-    font-family: 'Inter', 'Hina Mincho', 'GenWanMin', '源雲明體', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    font-family: 'Inter', 'Hina Mincho', 'Noto Serif TC', 'Noto Serif TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     background-color: var(--bg-main);
     color: var(--text);
     line-height: 1.6;
@@ -35,7 +35,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.lang-content.zh { font-family: 'GenWanMin', '源雲明體', 'Inter', sans-serif; }
+.lang-content.zh { font-family: 'Noto Serif TC', 'Inter', sans-serif; }
 .lang-content.jp { font-family: 'Hina Mincho', 'Noto Sans JP', 'Inter', sans-serif; }
 .lang-content.en { font-family: 'Inter', sans-serif; }
 
