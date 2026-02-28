@@ -1,0 +1,107 @@
+:root {
+    --bg-main: #e6dace;      /* 主背景米色 */
+    --bg-card: #f4ece6;      /* 卡片淡米色 */
+    --primary: #2c3e50;      /* 專業深藍 */
+    --text: #333333;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* 導覽列 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 10%;
+    background: var(--white);
+}
+
+.logo { font-weight: 600; font-size: 1.2rem; }
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--primary); }
+
+/* 主容器 */
+.hero-container {
+    display: flex;
+    min-height: 80vh;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 10%;
+    gap: 4rem;
+}
+
+/* 個人卡片 */
+.profile-card {
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    flex: 1;
+    max-width: 400px;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.profile-name { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+.profile-title { font-weight: 300; color: #666; margin-bottom: 1.5rem; }
+
+/* 內容區 */
+.content-area { flex: 1.5; }
+.main-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.bio-text { font-size: 1.1rem; color: #444; margin-bottom: 2.5rem; max-width: 600px; }
+
+/* 按鈕 */
+.cta-group { display: flex; gap: 1.5rem; }
+.btn {
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary { background: var(--primary); color: var(--white); }
+.btn-primary:hover { background: #34495e; transform: translateY(-3px); }
+.btn-secondary { border: 1px solid var(--primary); color: var(--primary); }
+.btn-secondary:hover { background: rgba(44, 62, 80, 0.05); }
+
+/* 響應式手機版 */
+@media (max-width: 992px) {
+    .hero-container { flex-direction: column; text-align: center; padding: 2rem 5%; }
+    .main-headline { font-size: 3rem; }
+    .cta-group { justify-content: center; }
+    .content-area { order: -1; } /* 讓文字在手機上排在圖片上方 */
+}
