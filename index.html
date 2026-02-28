@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
 
     <meta name="author" content="Chinming Chan">
-    <meta name="description" content="Chinming Chan 的個人作品集。展示在大阪的專業諮詢與管理實務經驗。">
+    <meta name="description" content="Chinming Chan的個人作品集。展示在大阪的專業諮詢與管理實務經驗。">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -116,17 +116,28 @@
         </div>
     </section>
 
+    <section id="credits" class="credits-section">
+        <h2 class="section-title lang-content zh">鳴謝</h2>
+        <h2 class="section-title lang-content jp" style="display:none;">謝辞</h2>
+        <h2 class="section-title lang-content en" style="display:none;">Acknowledgements</h2>
+        <div class="underline"></div>
+        <div class="credits-content">
+            <ul class="credits-list">
+                <li>Background Noise Texture by <a href="https://grainy-gradients.vercel.app/" target="_blank" rel="noopener noreferrer">Grainy Gradients</a></li>
+                <li>Icons provided by <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">FontAwesome</a></li>
+            </ul>
+        </div>
+    </section>
+
     <footer class="footer">
         <p>© 2026 by Chinming Chan. All rights reserved.</p>
     </footer>
 
     <script>
-    // 切換語言下拉選單顯示狀態
     function toggleLangMenu() {
         document.getElementById("langMenu").classList.toggle("show");
     }
 
-    // 點擊畫面其他地方時關閉下拉選單
     window.onclick = function(event) {
         if (!event.target.matches('.dropdown-btn') && !event.target.closest('.dropdown-btn')) {
             let dropdowns = document.getElementsByClassName("dropdown-content");
@@ -139,14 +150,10 @@
         }
     }
 
-    // 更新語言設定與按鈕顯示文字
     function setLang(lang, text) {
-        // 更改按鈕上的文字
         document.getElementById('current-lang-text').innerText = text;
-        // 關閉選單
         document.getElementById("langMenu").classList.remove("show");
         
-        // 切換所有帶有 lang-content 的元素
         document.querySelectorAll('.lang-content').forEach(el => {
             el.style.display = 'none';
             if (el.classList.contains(lang)) {
@@ -155,7 +162,6 @@
         });
     }
 
-    // 深色模式切換與儲存狀態
     function toggleTheme() {
         const body = document.body;
         body.classList.toggle('dark-theme');
@@ -164,18 +170,33 @@
         
         if (body.classList.contains('dark-theme')) {
             icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun'); // 切換成太陽圖示
+            icon.classList.add('fa-sun');
             localStorage.setItem('theme', 'dark');
         } else {
             icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon'); // 切換回月亮圖示
+            icon.classList.add('fa-moon');
             localStorage.setItem('theme', 'light');
         }
     }
 
-    // 頁面載入時檢查是否曾開啟深色模式
+    // 頁面載入時檢查深色模式(結合手動設定、系統偏好與當地時間)
     window.onload = function() {
-        if (localStorage.getItem('theme') === 'dark') {
+        const savedTheme = localStorage.getItem('theme');
+        let shouldBeDark = false;
+
+        if (savedTheme) {
+            shouldBeDark = (savedTheme === 'dark');
+        } else {
+            // 檢查裝置系統是否偏好深色模式
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            // 檢查當地時間是否為日落後(假設18:00到06:00之間)
+            const hour = new Date().getHours();
+            const isNight = hour >= 18 || hour < 6;
+            
+            shouldBeDark = prefersDark || isNight;
+        }
+
+        if (shouldBeDark) {
             document.body.classList.add('dark-theme');
             document.querySelector('#theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
