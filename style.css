@@ -20,7 +20,7 @@ body.dark-theme {
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Noto Sans TC', 'Noto Sans JP', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     background-color: var(--bg-main);
     color: var(--text);
     line-height: 1.6;
@@ -65,7 +65,7 @@ body::before {
 }
 
 .navbar.shrunk {
-    max-width: 160px;
+    max-width: max-content;
     margin: 20px 20px 0 auto;
     padding: 0.6rem 1.2rem;
     background: rgba(255, 255, 255, 0.9);
@@ -266,7 +266,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     min-height: 90vh;
     align-items: center;
     justify-content: center;
-    padding: 8rem 10% 4rem; /* 增加上方留白，避免重疊 */
+    padding: 8rem 10% 4rem; 
     gap: 6rem;
 }
 
@@ -301,7 +301,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transform: scale(1.08) rotate(3deg); 
 }
 
-/* 更改字型大小、確保不加粗 */
 .profile-name { 
     font-family: 'Sassy Frass', cursive; 
     font-size: 4.5rem; 
@@ -316,7 +315,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 .bio-text { font-size: 1.1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 550px; }
 
 .cta-group { display: flex; gap: 1.5rem; }
-/* 按鈕增加最小寬度，以固定大小容納各語言 */
 .btn { 
     padding: 1rem 2rem; 
     min-width: 160px; 
@@ -339,7 +337,10 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 .icon-link { color: var(--primary); font-size: 1.3rem; transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
-.resume-section { padding: 8rem 10%; background: var(--white); transition: background-color 0.3s; }
+.resume-section { 
+    padding: 8rem 10%; 
+    background: linear-gradient(to bottom, var(--bg-main) 0px, var(--white) 100px, var(--white) calc(100% - 100px), var(--bg-card) 100%);
+}
 .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 1rem auto 4rem; }
 .category-title { color: var(--primary); }
