@@ -25,7 +25,7 @@
 <nav class="dot-nav">
     <a href="#about" class="dot-nav-item">
         <span class="dot-label">
-            <span class="lang-content zh">關於我</span>
+            <span class="lang-content zh">個人簡介</span>
             <span class="lang-content jp" style="display:none;">自己紹介</span>
             <span class="lang-content en" style="display:none;">ABOUT</span>
         </span>
@@ -50,17 +50,19 @@
 </nav>
 
 <nav class="navbar">
-    <div class="logo">CC BLOG</div>
+    <div class="logo">CHINMING.C</div>
     <div class="nav-links">
         <div class="nav-controls">
             <div class="lang-dropdown">
                 <button class="dropdown-btn" onclick="toggleLangMenu()">
-                    <i class="fa-solid fa-globe"></i> <span id="current-lang-text">繁中</span> <i class="fa-solid fa-caret-down"></i>
+                    <img id="current-flag" src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon">
+                    <span id="current-lang-text">繁中</span> 
+                    <i class="fa-solid fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content" id="langMenu">
-                    <a href="#" onclick="setLang('zh', '繁中'); return false;"><img src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon"> 繁體中文</a>
-                    <a href="#" onclick="setLang('jp', '日本語'); return false;"><img src="./public/Flags-Rounded_Rectangle/Japan.png" class="flag-icon"> 日本語</a>
-                    <a href="#" onclick="setLang('en', 'EN'); return false;"><img src="./public/Flags-Rounded_Rectangle/United_Kingdom.png" class="flag-icon"> English</a>
+                    <a href="#" onclick="setLang('zh', '繁中', './public/Flags-Rounded_Rectangle/Taiwan.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon"> 繁體中文</a>
+                    <a href="#" onclick="setLang('jp', '日本語', './public/Flags-Rounded_Rectangle/Japan.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/Japan.png" class="flag-icon"> 日本語</a>
+                    <a href="#" onclick="setLang('en', 'EN', './public/Flags-Rounded_Rectangle/United_Kingdom.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/United_Kingdom.png" class="flag-icon"> English</a>
                 </div>
             </div>
 
@@ -207,8 +209,9 @@
         }
     }
 
-    function setLang(lang, text) {
+    function setLang(lang, text, flagSrc) {
         document.getElementById('current-lang-text').innerText = text;
+        document.getElementById('current-flag').src = flagSrc;
         document.getElementById("langMenu").classList.remove("show");
         
         document.querySelectorAll('.lang-content').forEach(el => {
