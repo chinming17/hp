@@ -25,17 +25,19 @@
     <nav class="navbar">
         <div class="logo">CC BLOG</div>
         <div class="nav-links">
-            <a href="#about" class="nav-item">ABOUT ME</a>
-            
-            <div class="lang-switcher">
-                <div class="lang-nav">
-                    <button onclick="setLang('zh')" class="lang-btn active">繁</button>
-                    <button onclick="setLang('jp')" class="lang-btn">日</button>
-                    <button onclick="setLang('en')" class="lang-btn">EN</button>
+            <a href="#about" class="nav-item lang-content zh">關於我</a>
+            <a href="#about" class="nav-item lang-content jp" style="display:none;">自己紹介</a>
+            <a href="#about" class="nav-item lang-content en" style="display:none;">ABOUT ME</a>
+        
+        <div class="lang-switcher">
+            <div class="lang-nav">
+                <button onclick="setLang('zh')" class="lang-btn active">🇹🇼 繁</button>
+                <button onclick="setLang('jp')" class="lang-btn">🇯🇵 日</button>
+                <button onclick="setLang('en')" class="lang-btn">🇺🇸 EN</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
     <main id="about" class="hero-container">
         <section class="profile-card">
