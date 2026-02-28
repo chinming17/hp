@@ -250,6 +250,31 @@
             document.querySelector('#theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
     };
+        // 導覽列滾動縮放邏輯
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', function() {
+    // 獲取目前滾動距離
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // 設定一個緩衝區(例如滾動超過50px才開始作動)，避免稍微滑動就觸發
+    if (scrollTop > 50) {
+        if (scrollTop > lastScrollTop) {
+            // 向下滾動：添加縮小藥丸樣式
+            navbar.classList.add('shrunk');
+        } else {
+            // 向上滾動：移除縮小樣式，恢復中央展開
+            navbar.classList.remove('shrunk');
+        }
+    } else {
+        // 回到最頂部時：一律恢復展開狀態
+        navbar.classList.remove('shrunk');
+    }
+    
+    // 更新上一次的滾動位置
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}, false);
     </script>
 </body>
 </html>
