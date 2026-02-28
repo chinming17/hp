@@ -42,17 +42,22 @@ body::before {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    /* 調整內邊距與外邊距，創造懸浮感 */
-    padding: 1rem 2rem; 
-    margin: 20px auto 0;
-    width: 90%;
-    max-width: 1200px;
-    border-radius: 50px; /* 膠囊圓角 */
+    padding: 1.2rem 10%; 
+    /* 改為半透明白色並加上毛玻璃濾鏡 */
+    background: rgba(255, 255, 255, 0.65); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* 支援 Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     
-    background: var(--white); 
-    position: sticky; top: 20px; z-index: 1000;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 確保深色模式下的毛玻璃效果也正確 */
+body.dark-theme .navbar {
+    background: rgba(30, 30, 30, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo { font-weight: 800; font-size: 1.2rem; color: var(--primary); letter-spacing: 1px; }
