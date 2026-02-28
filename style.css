@@ -21,10 +21,9 @@ html { scroll-behavior: smooth; }
 
 /* 宣告自訂字型：源雲明體 */
 @font-face {
-    font-family: 'GenWanMin';
-    src: local('GenWanMin'), local('源雲明體');
-    /* 若欲透過網頁伺服器載入字型檔，請將檔案放入public並取消下方註解 */
-    /* src: url('./public/fonts/GenWanMin.ttf') format('truetype'); */
+    font-family:'GenWanMin';
+    src:local('GenWanMin'),local('源雲明體'),
+        url('./public/fonts/GenWanMin.woff2') format('woff2');
 }
 
 body {
