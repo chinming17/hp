@@ -42,16 +42,15 @@ body::before {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    padding: 1.2rem 10%; 
-    /* 改為半透明白色並加上毛玻璃濾鏡 */
-    background: rgba(255, 255, 255, 0.65); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* 支援 Safari */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 1.5rem 10%; 
     
-    position: sticky; top: 0; z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    transition: background-color 0.3s, border-color 0.3s;
+    /* 完全透明無陰影 */
+    background: transparent; 
+    box-shadow: none;
+    
+    position: absolute; /* 讓導覽列隨著畫面滾動上去，不固定在頂部 */
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
 }
 
 /* 確保深色模式下的毛玻璃效果也正確 */
