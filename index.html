@@ -330,6 +330,11 @@
             }
         });
 
+        // 觸底偵測：如果滑動到頁面最底端，強制切換至最後一個板塊(鳴謝)
+        if ((window.innerHeight + Math.round(scrollY)) >= document.documentElement.scrollHeight - 50) {
+            current = 'credits';
+        }
+
         navItems.forEach(item => {
             item.classList.remove('active');
             if (current && item.getAttribute('href') === '#' + current) {
