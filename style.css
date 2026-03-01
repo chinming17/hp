@@ -63,7 +63,11 @@ body {
 }
 
 h4.lang-content.en { font-size: 1.15em; }
-.bio-text.lang-content.en { font-size: 1.25rem; } 
+/* --- 英文版個人簡介專屬排版 --- */
+.bio-text.lang-content.en { 
+    font-size: 1.25rem; 
+    line-height: 1.4; /* 將行距從全域的 1.8 縮小至 1.4，讓英文排版更緊湊優雅 */
+}
 .item-detail p.lang-content.en, 
 .item-detail .job-title.lang-content.en { font-size: 1.05rem; }
 .blog-content .lang-content.en { font-size: 1.1rem; }
