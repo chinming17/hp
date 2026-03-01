@@ -9,10 +9,10 @@
 
 body.dark-theme {
     --bg-main: #121212;
-    --bg-card: #1e1e1e;
+    --bg-card: #1c1c1c; /* 稍微調亮卡片與鳴謝底色 */
+    --white: #262626;   /* 大幅調亮履歷底色，拉開與主背景的對比 */
     --primary: #e0e0e0;
     --text: #b3b3b3;
-    --white: #1a1a1a;
     --accent: #ffffff;
 }
 
@@ -389,7 +389,8 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 body.dark-theme .resume-section,
 body.dark-theme .blog-section,
 body.dark-theme .credits-section {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.12); /* 提高白線透明度 */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);     /* 新增向上的邊緣陰影 */
 }
 
 .blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
