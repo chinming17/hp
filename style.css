@@ -9,14 +9,15 @@
 
 body.dark-theme {
     --bg-main: #121212;
-    --bg-card: #1c1c1c; /* 稍微調亮卡片與鳴謝底色 */
-    --white: #262626;   /* 大幅調亮履歷底色，拉開與主背景的對比 */
+    --bg-card: #1c1c1c; 
+    --white: #262626;   
     --primary: #e0e0e0;
     --text: #b3b3b3;
     --accent: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+/* 平滑滾動設定 */
 html { scroll-behavior: smooth; }
 
 /* 宣告自訂字型：Noto Serif TC */
@@ -115,7 +116,8 @@ body.dark-theme .navbar.shrunk {
     background: rgba(30, 30, 30, 0.95);
 }
 body.dark-theme .navbar .logo {
-    text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.6);
+    text-shadow: none; 
+    filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.5)); 
 }
 
 .nav-links {
@@ -139,7 +141,7 @@ body.dark-theme .navbar .logo {
 .dropdown-btn {
     font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     background: transparent;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--primary); /* 邊緣更窄 */
     padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -271,7 +273,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     white-space: nowrap;
 }
 
-/* Hover 與 Active 狀態：觸發圓點放大與文字顯示 */
 .dot-nav-item:hover .dot,
 .dot-nav-item.active .dot {
     opacity: 1;
@@ -285,13 +286,16 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transform: translateX(0); 
 }
 
+/* --- 個人簡介板塊：優化構圖與視覺重心 --- */
 .hero-container {
     display: flex;
-    min-height: 90vh;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
-    padding: 8rem 10% 4rem; 
+    padding: 120px 5% 4rem; 
     gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* --- 卡片立體感與懸浮特效 --- */
@@ -334,15 +338,37 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     line-height: 1;
 }
 
-.content-area { flex: 1; }
-.main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
-.bio-text { font-size: 1.1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 550px; }
+.content-area { 
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-headline { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 4.5rem; 
+    line-height: 1.15; 
+    color: var(--primary); 
+    margin-bottom: 2rem; 
+}
+
+/* 文字排版優化：行高、字距、對齊方式與最大寬度 */
+.bio-text { 
+    font-size: 1.1rem; 
+    color: var(--text); 
+    margin-bottom: 2.5rem; 
+    max-width: 650px; 
+    line-height: 1.8; 
+    letter-spacing: 0.5px;
+    text-align: justify;
+}
 
 .cta-group { display: flex; gap: 1.5rem; }
 .btn { 
-    padding: 0;
-    width: 260px;
-    height: 54px;
+    padding: 2px 0 0 0; 
+    width: 210px; 
+    height: 50px; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -350,8 +376,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     text-decoration: none; 
     border-radius: 24px; 
     font-weight: 700; 
-    font-size: 0.95rem; 
-    letter-spacing: 0.5px; 
+    font-size: 1.05rem; 
+    letter-spacing: 1.5px; 
     transition: 0.3s; 
     box-sizing: border-box;
     white-space: nowrap;
@@ -363,34 +389,29 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 .btn-secondary:hover { transform: translateY(-5px); background: rgba(0,0,0,0.04); }
 body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
-.social-icons { display: flex; justify-content: center; gap: 1.2rem; margin-top: 1rem; }
-.icon-link { color: var(--primary); font-size: 1.3rem; transition: 0.3s; }
+.social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+.icon-link { color: var(--primary); font-size: 1.8rem; transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
-/* --- 區塊底色與深色模式分隔線 --- */
-.resume-section { 
-    padding: 8rem 10%; 
-    background: linear-gradient(to bottom, var(--bg-main) 0px, var(--white) 100px, var(--white) 100%);
-    transition: background-color 0.3s, border-top 0.3s;
+/* --- 卡片包覆板塊樣式 --- */
+.section-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    padding: 4rem 10%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.3s;
 }
 
-.blog-section {
-    padding: 8rem 10%;
-    background: linear-gradient(to bottom, var(--white) 0px, var(--bg-main) 100px, var(--bg-main) calc(100% - 100px), var(--bg-card) 100%);
-    transition: background-color 0.3s, border-top 0.3s;
+body.dark-theme .section-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.credits-section { 
-    padding: 4rem 10%; 
-    background: var(--bg-card); 
-    transition: background-color 0.3s, border-top 0.3s; 
-}
-
-body.dark-theme .resume-section,
-body.dark-theme .blog-section,
-body.dark-theme .credits-section {
-    border-top: 1px solid rgba(255, 255, 255, 0.12); /* 提高白線透明度 */
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);     /* 新增向上的邊緣陰影 */
+#credits.section-card {
+    margin-bottom: 2rem;
 }
 
 .blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
@@ -402,13 +423,12 @@ body.dark-theme .credits-section {
 .credits-list li { margin-bottom: 1rem; font-size: 0.95rem; }
 .credits-list a { color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s; }
 .credits-list a:hover { color: var(--accent); text-decoration: underline; }
-.footer { padding: 4rem; text-align: center; background: var(--bg-card); color: var(--text); font-size: 0.8rem; transition: background-color 0.3s; }
+.footer { padding: 4rem; text-align: center; color: var(--text); font-size: 0.8rem; transition: background-color 0.3s; }
 
 /* --- 板塊內文字型設定 --- */
-.hero-container .lang-content.zh, .resume-section .lang-content.zh, .blog-section .lang-content.zh, .credits-section .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.hero-container .lang-content.jp, .resume-section .lang-content.jp, .blog-section .lang-content.jp, .credits-section .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
-.hero-container .lang-content.en, .resume-section .lang-content.en, .blog-section .lang-content.en { font-family: 'Times New Roman', serif; }
-/* 鳴謝區塊英文預設使用 body 設定的英文字型 (Inter)，不覆蓋 */
+.hero-container .lang-content.zh, .section-card .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.hero-container .lang-content.jp, .section-card .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
+.hero-container .lang-content.en, .section-card .lang-content.en { font-family: 'Times New Roman', serif; }
 
 /* --- 板塊標題字型設定 (包含主標題) --- */
 .main-headline .lang-content.zh, .section-title .lang-content.zh, .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
@@ -416,9 +436,9 @@ body.dark-theme .credits-section {
 .main-headline .lang-content.en, .section-title .lang-content.en, .category-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
 /* --- 排除按鈕字型設定 --- */
-.btn .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.btn .lang-content.jp { font-family: 'Hina Mincho', serif; }
-.btn .lang-content.en { font-family: 'Times New Roman', serif; }
+.btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
+.btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
+.btn .lang-content.en { font-family: 'Inter', sans-serif; font-weight: 700; }
 
 /* 手機版與極窄螢幕設定 */
 @media (max-width: 992px) {
@@ -428,6 +448,8 @@ body.dark-theme .credits-section {
     .cta-group { flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
     .btn { width: 100%; max-width: 280px; }
     .dot-nav { display: none; }
+    .section-card { padding: 3rem 5%; margin-bottom: 2rem; }
+    .icon-link:hover { transform: none; } 
 }
 
 @media (max-width: 480px) {
@@ -435,19 +457,4 @@ body.dark-theme .credits-section {
     .navbar .logo { font-size: 1.1rem; letter-spacing: 0px; max-width: 120px; }
     .nav-controls { gap: 6px; }
     .dropdown-btn { width: 115px; padding: 5px 8px; font-size: 12px; }
-}
-
-.watermark-bg{
-position:fixed;
-right:-5vw; /*稍微移出螢幕右側*/
-bottom:5vh;
-font-size:25vw; /*文字巨大化，佔滿右側空間*/
-font-weight:900;
-color:rgba(0,0,0,0.04); /*極低透明度，呈現浮水印效果*/
-z-index:-1; /*確保在所有內容後方*/
-user-select:none; /*防止被選取*/
-pointer-events:none; /*防止干擾滑鼠點擊*/
-white-space:nowrap;
-font-family:'Arial Black',sans-serif;
-letter-spacing:-1.5rem; /*縮緊字間距增加設計感*/
 }
