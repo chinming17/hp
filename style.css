@@ -9,8 +9,8 @@
 
 body.dark-theme {
     --bg-main: #121212;
-    --bg-card: #1c1c1c; /* 稍微調亮卡片與鳴謝底色 */
-    --white: #262626;   /* 大幅調亮履歷底色，拉開與主背景的對比 */
+    --bg-card: #1c1c1c; /* 調亮底部卡片色階 */
+    --white: #262626;   /* 大幅調亮履歷區塊色階，增加區別 */
     --primary: #e0e0e0;
     --text: #b3b3b3;
     --accent: #ffffff;
@@ -98,7 +98,8 @@ body::before {
                 margin 0.4s ease,
                 font-size 0.3s;
     color: #e69c00; 
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3); 
+    /* 修正iOS渲染變黑的問題：利用白色光暈墊底勾勒輪廓 */
+    filter: drop-shadow(0px 1px 1px rgba(255,255,255,1)) drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
 }
 
 .navbar.shrunk .logo {
@@ -115,7 +116,9 @@ body.dark-theme .navbar.shrunk {
     background: rgba(30, 30, 30, 0.95);
 }
 body.dark-theme .navbar .logo {
-    text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.6);
+    color: #ffcc00;
+    /* 黑暗模式增強白光外發光，黑底白邊更加清晰 */
+    filter: drop-shadow(0px 0px 2px rgba(255,255,255,0.9)) drop-shadow(0px 0px 8px rgba(255,255,255,0.4));
 }
 
 .nav-links {
@@ -271,7 +274,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     white-space: nowrap;
 }
 
-/* Hover 與 Active 狀態：觸發圓點放大與文字顯示 */
 .dot-nav-item:hover .dot,
 .dot-nav-item.active .dot {
     opacity: 1;
@@ -371,26 +373,27 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 .resume-section { 
     padding: 8rem 10%; 
     background: linear-gradient(to bottom, var(--bg-main) 0px, var(--white) 100px, var(--white) 100%);
-    transition: background-color 0.3s, border-top 0.3s;
+    transition: background-color 0.3s, border-top 0.3s, box-shadow 0.3s;
 }
 
 .blog-section {
     padding: 8rem 10%;
     background: linear-gradient(to bottom, var(--white) 0px, var(--bg-main) 100px, var(--bg-main) calc(100% - 100px), var(--bg-card) 100%);
-    transition: background-color 0.3s, border-top 0.3s;
+    transition: background-color 0.3s, border-top 0.3s, box-shadow 0.3s;
 }
 
 .credits-section { 
     padding: 4rem 10%; 
     background: var(--bg-card); 
-    transition: background-color 0.3s, border-top 0.3s; 
+    transition: background-color 0.3s, border-top 0.3s, box-shadow 0.3s; 
 }
 
+/* 深色模式下增強區塊的分層感 */
 body.dark-theme .resume-section,
 body.dark-theme .blog-section,
 body.dark-theme .credits-section {
-    border-top: 1px solid rgba(255, 255, 255, 0.12); /* 提高白線透明度 */
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);     /* 新增向上的邊緣陰影 */
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
@@ -408,7 +411,6 @@ body.dark-theme .credits-section {
 .hero-container .lang-content.zh, .resume-section .lang-content.zh, .blog-section .lang-content.zh, .credits-section .lang-content.zh { font-family: 'Noto Serif TC', serif; }
 .hero-container .lang-content.jp, .resume-section .lang-content.jp, .blog-section .lang-content.jp, .credits-section .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
 .hero-container .lang-content.en, .resume-section .lang-content.en, .blog-section .lang-content.en { font-family: 'Times New Roman', serif; }
-/* 鳴謝區塊英文預設使用 body 設定的英文字型 (Inter)，不覆蓋 */
 
 /* --- 板塊標題字型設定 (包含主標題) --- */
 .main-headline .lang-content.zh, .section-title .lang-content.zh, .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
