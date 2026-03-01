@@ -141,7 +141,7 @@ body.dark-theme .navbar .logo {
 .dropdown-btn {
     font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     background: transparent;
-    border: 2px solid var(--primary); /* 邊緣微加粗 */
+    border: 1.5px solid var(--primary); /* 邊緣略微變窄 */
     padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -279,7 +279,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transform: scale(1.5); 
 }
 
-/* 當滑鼠懸停或滾動至該區塊時顯示對應文字 */
 .dot-nav-item:hover .dot-label,
 .dot-nav-item.active .dot-label {
     opacity: 1;
@@ -289,6 +288,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 
 .hero-container {
     display: flex;
+    position: relative; /* 為了格言標籤的絕對定位而設置 */
     min-height: 90vh;
     align-items: center;
     justify-content: center;
@@ -340,11 +340,60 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 .main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
 .bio-text { font-size: 1.1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 550px; }
 
+/* --- 右側格言裝飾 --- */
+.hero-decor {
+    position: absolute;
+    right: 5%; /* 與右側導覽列保持安全距離 */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b38b36; /* 低調琥珀金 */
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    transition: color 0.3s;
+}
+
+body.dark-theme .hero-decor {
+    color: #d6ab4a; /* 暗色模式較亮的琥珀金 */
+}
+
+.quote-jp {
+    writing-mode: vertical-rl;
+    font-size: 1.15rem;
+    letter-spacing: 4px;
+    line-height: 2.2;
+}
+
+.tags-en {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.vertical-tag {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); /* 讓英文從下往上讀 */
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vertical-tag::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 50px;
+    background-color: currentColor;
+    opacity: 0.6;
+}
+
 .cta-group { display: flex; gap: 1.5rem; }
 .btn { 
     padding: 2px 0 0 0; /* 文字微調向下增加排版呼吸感 */
-    width: 260px;
-    height: 54px;
+    width: 210px; /* 縮小寬度比例更和諧 */
+    height: 50px; /* 縮小高度 */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -366,7 +415,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
 .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
-.icon-link { color: var(--primary); font-size: 1.8rem; /* 圖示改大 */ transition: 0.3s; }
+.icon-link { color: var(--primary); font-size: 1.8rem; transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
 /* --- 卡片包覆板塊樣式 --- */
@@ -425,8 +474,8 @@ body.dark-theme .section-card {
     .btn { width: 100%; max-width: 280px; }
     .dot-nav { display: none; }
     .section-card { padding: 3rem 5%; margin-bottom: 2rem; }
-    /* 手機端停用圖示點擊浮動效果 */
     .icon-link:hover { transform: none; } 
+    .hero-decor { display: none; } /* 手機版隱藏裝飾以節省空間 */
 }
 
 @media (max-width: 480px) {
