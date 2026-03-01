@@ -292,8 +292,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     min-height: 100vh;
     align-items: center;
     justify-content: flex-start; /* 讓內容對齊左側 */
-    padding: 120px 5% 4rem 8%; /* 稍微增加左側內邊距，平衡視覺 */
-    gap: 7rem; /* 拉長文字與卡片的距離 */
+    padding: 120px 5% 4rem 2%; /* 再次縮減左側內邊距，讓頭像更往左 */
+    gap: 10rem; /* 大幅拉長文字與卡片的距離 */
     max-width: 1300px; 
     margin: 0 auto;
 }
@@ -354,7 +354,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 }
 
 .main-headline span[class^="line-"] {
-    display: block; /* 讓每一行獨立成塊，以便後續套用個別對齊方式 */
+    display: block; /* 讓每一行獨立成塊 */
 }
 
 /* 文字排版優化：行高、字距與完美左右對齊 */
@@ -398,11 +398,11 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 .icon-link { color: var(--primary); font-size: 1.8rem; transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
-/* --- 卡片包覆板塊寬度隨動 --- */
+/* --- 卡片包覆板塊寬度隨動與新增動態效果 --- */
 .section-card {
     background: var(--bg-card);
     border-radius: 24px;
-    width: 95%; /* 加大佔比讓卡片隨螢幕寬度伸展 */
+    width: 95%; /* 隨螢幕寬度伸展 */
     max-width: 1300px; /* 對齊個人簡介板塊的最大寬度 */
     margin: 0 auto 4rem auto;
     padding: 4rem 10%;
@@ -410,9 +410,20 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.3s;
 }
 
+/* 為其他卡片加入相同的懸浮特效 */
+.section-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.12), 0 5px 15px rgba(0,0,0,0.06);
+}
+
 body.dark-theme .section-card {
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 深色模式下的懸浮陰影適配 */
+body.dark-theme .section-card:hover {
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 #credits.section-card {
@@ -452,7 +463,7 @@ body.dark-theme .section-card {
     
     .main-headline { font-size: 2.8rem; line-height: 1.25; }
     
-    .content-area { align-items: center; }
+    .content-area { width: 100%; align-items: center; }
     .bio-text { 
         text-align: justify; 
         text-justify: inter-ideograph;
@@ -471,17 +482,19 @@ body.dark-theme .section-card {
 @media (max-width: 480px) {
     .navbar { padding: 0.6rem 4%; }
     .navbar .logo { font-size: 1.1rem; letter-spacing: 0px; max-width: 120px; }
-    .nav-controls { gap: 16px; } /* 增加語言切換與黑色模式按鈕的距離 */
+    .nav-controls { gap: 16px; } 
     .dropdown-btn { width: 115px; padding: 5px 8px; font-size: 12px; }
     
-    /* 手機端標題字級統一縮小 */
-    .main-headline { width: 100%; font-size: 2.4rem; line-height: 1.3; margin-bottom: 1.5rem; }
+    /* 手機端標題區塊充滿寬度以確保對齊效果正確 */
+    .main-headline { width: 100%; font-size: 2.4rem; line-height: 1.3; margin-bottom: 1.5rem; display: block; }
+    .main-headline div { width: 100%; display: block; }
     
     /* 針對英文長單字額外縮小，確保不斷字 */
     .main-headline .lang-content.en { font-size: 2.1rem; line-height: 1.2; }
     
-    /* 手機端標題排版：中日版 左、中、右 階梯式對齊 */
-    .lang-content.zh .line-1, .lang-content.jp .line-1 { text-align: left; padding-left: 5%; }
-    .lang-content.zh .line-2, .lang-content.jp .line-2 { text-align: center; }
-    .lang-content.zh .line-3, .lang-content.jp .line-3 { text-align: right; padding-right: 5%; }
+    /* 手機端標題排版：中日版 左、中、右 階梯式對齊，英文版置中 */
+    .lang-content.zh .line-1, .lang-content.jp .line-1 { text-align: left; padding-left: 5%; display: block; }
+    .lang-content.zh .line-2, .lang-content.jp .line-2 { text-align: center; display: block; }
+    .lang-content.zh .line-3, .lang-content.jp .line-3 { text-align: right; padding-right: 5%; display: block; }
+    .lang-content.en .line-1, .lang-content.en .line-2, .lang-content.en .line-3 { text-align: center; display: block; }
 }
