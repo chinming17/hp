@@ -420,6 +420,55 @@
             }
         });
     }, { passive: true });
+// === 點狀導航自動隱藏與重疊偵測邏輯 ===
+    let dotNavTimeout;
+    const dotNavContainer = document.querySelector('.dot-nav');
+    // 指定要偵測重疊的文字板塊 (包含個人簡介文字區與所有卡片)
+    const collisionElements = document.querySelectorAll('.content-area, .section-card');
+
+    function manageDotNavVisibility() {
+        if (window.innerWidth <= 992) return; // 手機平板原本就隱藏，不執行此邏輯
+
+        let isColliding = false;
+        const navRect = dotNavContainer.getBoundingClientRect();
+
+        // 1. 偵測是否與卡片或文字區塊重疊
+        collisionElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            // 碰撞判定公式 (加上 20px 緩衝區)
+            if (
+                navRect.left < rect.right + 20 &&
+                navRect.right > rect.left - 20 &&
+                navRect.top < rect.bottom &&
+                navRect.bottom > rect.top
+            ) {
+                isColliding = true;
+            }
+        });
+
+        if (isColliding) {
+            // 如果發生重疊，立刻隱藏，並清除計時器
+            dotNavContainer.classList.add('idle-hidden');
+            clearTimeout(dotNavTimeout);
+        } else {
+            // 如果沒有重疊，顯示導航
+            dotNavContainer.classList.remove('idle-hidden');
+            
+            // 2. 閒置計時器：停止滾動或滑鼠移動 2.5 秒後自動隱藏
+            clearTimeout(dotNavTimeout);
+            dotNavTimeout = setTimeout(() => {
+                dotNavContainer.classList.add('idle-hidden');
+            }, 2500); // 2500 毫秒 = 2.5 秒 (可依個人喜好修改時間)
+        }
+    }
+
+    // 監聽滾動、滑鼠移動與觸控事件來喚醒導航
+    window.addEventListener('scroll', manageDotNavVisibility, { passive: true });
+    window.addEventListener('mousemove', manageDotNavVisibility);
+    window.addEventListener('touchstart', manageDotNavVisibility, { passive: true });
+
+    // 網頁載入時初始化執行一次
+    manageDotNavVisibility();
     </script>
 </body>
 </html>
