@@ -41,10 +41,10 @@ body {
 .lang-content.jp { font-family: 'Hina Mincho', 'Noto Sans JP', 'Inter', sans-serif; }
 .lang-content.en { font-family: 'Inter', sans-serif; }
 
-/* --- 英文板塊內文專屬字型與字號補償 (Times New Roman) --- */
+/* --- 英文板塊內文專屬字型與字號補償 (Libre Baskerville) --- */
 .hero-container .lang-content.en, 
 .section-card .lang-content.en {
-    font-family: 'Times New Roman', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 1.05em; /* 基本微放大補償 */
 }
 
@@ -539,7 +539,7 @@ body.dark-theme .skill-item:hover {
 .category-title { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.4rem;}
 .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; font-weight: 700; }
 .category-title .lang-content.jp { font-family: 'Zen Old Mincho', serif; font-weight: 700; }
-.category-title .lang-content.en { font-family: 'Times New Roman', serif; font-weight: 700; letter-spacing: 1px;}
+.category-title .lang-content.en { font-family: 'Libre Baskerville', serif; font-weight: 700; letter-spacing: 1px;}
 
 /* --- 排除按鈕字型設定 --- */
 .btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
