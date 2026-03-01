@@ -105,9 +105,21 @@
 
         <section class="content-area">
             <h1 class="main-headline">
-                <span class="lang-content zh">這是我的<br>旅程與<br>經歷。</span>
-                <span class="lang-content jp" style="display:none;">これまでの<br>歩みと<br>経験。</span>
-                <span class="lang-content en" style="display:none;">HERE'S MY<br>JOURNEY &<br>EXPERIENCE.</span>
+                <span class="lang-content zh">
+                    <span class="line-1">這是我的</span>
+                    <span class="line-2">旅程與</span>
+                    <span class="line-3">經歷。</span>
+                </span>
+                <span class="lang-content jp" style="display:none;">
+                    <span class="line-1">これまでの</span>
+                    <span class="line-2">歩みと</span>
+                    <span class="line-3">経験。</span>
+                </span>
+                <span class="lang-content en" style="display:none;">
+                    <span class="line-1">HERE'S MY</span>
+                    <span class="line-2">JOURNEY &</span>
+                    <span class="line-3">EXPERIENCE.</span>
+                </span>
             </h1>
             
             <p class="bio-text lang-content zh">「譯語以觀幽微，守規而達致遠。」<br>憑藉深厚的翻譯實務與專業諮詢經驗，我擅長將繁雜的規章制度轉化為清晰且具溫度的實踐路徑。透過跨領域的領導力與敏銳的文化洞察，我致力於排除溝通障礙，協助各領域夥伴在變動環境中建構穩健的成長架構。我亦期許在文化領域深耕，透過推動多元交流與對話，讓專業價值在文化之下展現更深遠的影響力。</p>
@@ -319,7 +331,7 @@
             lastScrollTop = scrollY;
         }
 
-        // Scrollspy 圓點導覽邏輯（改良版：根據視角中心線判斷，徹底解決短板塊被跳過的問題）
+        // Scrollspy 圓點導覽邏輯（改良版：根據視角中心線判斷）
         let current = '';
         const scrollCenter = scrollY + (window.innerHeight / 3); 
         
