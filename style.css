@@ -48,6 +48,20 @@ body {
     font-size: 1.05em; /* 基本微放大補償 */
 }
 
+/* --- 中文板塊內文專屬字型 --- */
+.hero-container .lang-content.zh, 
+.section-card .lang-content.zh {
+    font-family: 'Noto Serif TC', serif; /* 您可以將 'Noto Serif TC' 替換成任何您想要的字型 */
+    /* font-size: 1em; 如果需要微調大小，可以取消這行的註解並修改數值 */
+}
+
+/* --- 日文板塊內文專屬字型 --- */
+.hero-container .lang-content.jp, 
+.section-card .lang-content.jp {
+    font-family: 'Zen Old Mincho', serif; /* 您可以將 'Hina Mincho' 替換成 'Zen Old Mincho' 或其他日文字型 */
+    /* font-size: 1em; 如果需要微調大小，可以取消這行的註解並修改數值 */
+}
+
 h4.lang-content.en { font-size: 1.15em; }
 .bio-text.lang-content.en { font-size: 1.25rem; } 
 .item-detail p.lang-content.en, 
@@ -537,8 +551,8 @@ body.dark-theme .skill-item:hover {
 .main-headline .lang-content.en, .section-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
 .category-title { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.4rem;}
-.category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; font-weight: 700; }
-.category-title .lang-content.jp { font-family: 'Zen Old Mincho', serif; font-weight: 700; }
+.category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; font-weight: 700; font-weight: 700; letter-spacing: 2px;}
+.category-title .lang-content.jp { font-family: 'Zen Old Mincho', serif; font-weight: 700; font-weight: 700; letter-spacing: 2px;}
 .category-title .lang-content.en { font-family: 'Libre Baskerville', serif; font-weight: 700; letter-spacing: 1px;}
 
 /* --- 排除按鈕字型設定 --- */
