@@ -127,19 +127,6 @@
                 </a>
             </div>
         </section>
-
-        <aside class="hero-decor">
-            <div class="lang-content zh quote-zh">
-                譯語以觀幽微，<br>守規而達致遠。
-            </div>
-            <div class="lang-content jp quote-jp" style="display:none;">
-                どんなにささやかでも、<br>個人の努力を、ちからを、<br>信じます。
-            </div>
-            <div class="lang-content en tags-en" style="display:none;">
-                <span class="vertical-tag">EST. 2026 / OSAKA</span>
-                <span class="vertical-tag">PORTFOLIO / CONSULTANT</span>
-            </div>
-        </aside>
     </main>
 
     <section id="resume" class="section-card">
@@ -310,18 +297,18 @@
     const navItems = document.querySelectorAll('.dot-nav-item');
 
     window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollY = window.scrollY || window.pageYOffset;
         let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         
         // Navbar 邏輯
-        if (scrollTop <= 0) {
+        if (scrollY <= 0) {
             navbar.classList.remove('shrunk');
             lastScrollTop = 0;
-        } else if (scrollTop >= maxScroll) {
-            lastScrollTop = scrollTop;
+        } else if (scrollY >= maxScroll) {
+            lastScrollTop = scrollY;
         } else {
-            if (scrollTop > 50) {
-                if (scrollTop > lastScrollTop) {
+            if (scrollY > 50) {
+                if (scrollY > lastScrollTop) {
                     navbar.classList.add('shrunk');
                 } else {
                     navbar.classList.remove('shrunk');
@@ -329,22 +316,23 @@
             } else {
                 navbar.classList.remove('shrunk');
             }
-            lastScrollTop = scrollTop;
+            lastScrollTop = scrollY;
         }
 
-        // Scrollspy 圓點導覽邏輯
+        // Scrollspy 圓點導覽邏輯（精確計算範圍）
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollTop >= sectionTop - sectionHeight / 3) {
+            const sectionHeight = section.offsetHeight;
+            // 減去導覽列與些許緩衝空間以提早觸發
+            const sectionTop = section.offsetTop - 150; 
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
             }
         });
 
         navItems.forEach(item => {
             item.classList.remove('active');
-            if (item.getAttribute('href').includes(current)) {
+            if (current && item.getAttribute('href') === '#' + current) {
                 item.classList.add('active');
             }
         });
