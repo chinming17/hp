@@ -436,3 +436,18 @@ body.dark-theme .credits-section {
     .nav-controls { gap: 6px; }
     .dropdown-btn { width: 115px; padding: 5px 8px; font-size: 12px; }
 }
+
+.watermark-bg{
+position:fixed;
+right:-5vw; /*稍微移出螢幕右側*/
+bottom:5vh;
+font-size:25vw; /*文字巨大化，佔滿右側空間*/
+font-weight:900;
+color:rgba(0,0,0,0.04); /*極低透明度，呈現浮水印效果*/
+z-index:-1; /*確保在所有內容後方*/
+user-select:none; /*防止被選取*/
+pointer-events:none; /*防止干擾滑鼠點擊*/
+white-space:nowrap;
+font-family:'Arial Black',sans-serif;
+letter-spacing:-1.5rem; /*縮緊字間距增加設計感*/
+}
