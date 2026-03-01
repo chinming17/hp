@@ -421,68 +421,33 @@
         });
     }, { passive: true });
         
-// === 點狀導航自動隱藏與重疊偵測邏輯 (效能優化版) ===
+// === 點狀導航：僅保留閒置自動隱藏邏輯 ===
     let dotNavTimeout;
-    let isTicking = false; // 用於控制計算頻率的鎖
     const dotNavContainer = document.querySelector('.dot-nav');
-    const collisionElements = document.querySelectorAll('.content-area, .section-card');
 
-    function checkVisibility() {
-        // 如果是手機版則不執行，節省效能
-        if (window.innerWidth <= 992) {
-            isTicking = false;
-            return;
-        }
+    function resetIdleTimer() {
+        // 如果是手機版或平板（寬度小於 992px），導航原本就隱藏，直接跳過不執行
+        if (window.innerWidth <= 992) return;
 
-        let isColliding = false;
-        const navRect = dotNavContainer.getBoundingClientRect();
-
-        // 1. 偵測是否與卡片或文字區塊重疊
-        for (let i = 0; i < collisionElements.length; i++) {
-            const rect = collisionElements[i].getBoundingClientRect();
-            // 如果導航欄在視窗外，或還沒滾動到該區域，快速跳過計算
-            if (rect.bottom < 0 || rect.top > window.innerHeight) continue;
-
-            if (
-                navRect.left < rect.right + 20 &&
-                navRect.right > rect.left - 20 &&
-                navRect.top < rect.bottom &&
-                navRect.bottom > rect.top
-            ) {
-                isColliding = true;
-                break; // 只要碰到一個元素就停止檢查剩下的，節省效能
-            }
-        }
-
-        if (isColliding) {
-            dotNavContainer.classList.add('idle-hidden');
-            clearTimeout(dotNavTimeout);
-        } else {
-            dotNavContainer.classList.remove('idle-hidden');
-            clearTimeout(dotNavTimeout);
-            dotNavTimeout = setTimeout(() => {
-                dotNavContainer.classList.add('idle-hidden');
-            }, 2500); 
-        }
+        // 只要偵測到滑鼠移動或滾動，立刻移除隱藏狀態，讓導航顯示
+        dotNavContainer.classList.remove('idle-hidden');
         
-        isTicking = false; // 計算完成，解開鎖定
+        // 清除上一次的計時器
+        clearTimeout(dotNavTimeout);
+        
+        // 重新倒數，2.5 秒沒有任何動作後自動隱藏
+        dotNavTimeout = setTimeout(() => {
+            dotNavContainer.classList.add('idle-hidden');
+        }, 2500); // 2500 毫秒可依需求自行修改
     }
 
-    function manageDotNavVisibility() {
-        // 利用 requestAnimationFrame 限制計算頻率 (鎖定狀態下不重複觸發)
-        if (!isTicking) {
-            window.requestAnimationFrame(checkVisibility);
-            isTicking = true;
-        }
-    }
+    // 監聽滾動、滑鼠移動與觸控事件來重置計時器
+    window.addEventListener('scroll', resetIdleTimer, { passive: true });
+    window.addEventListener('mousemove', resetIdleTimer);
+    window.addEventListener('touchstart', resetIdleTimer, { passive: true });
 
-    // 監聽滾動、滑鼠移動與觸控事件
-    window.addEventListener('scroll', manageDotNavVisibility, { passive: true });
-    window.addEventListener('mousemove', manageDotNavVisibility);
-    window.addEventListener('touchstart', manageDotNavVisibility, { passive: true });
-
-    // 網頁載入時初始化執行一次
-    manageDotNavVisibility();
+    // 網頁初次載入時先啟動一次計時器
+    resetIdleTimer();
     </script>
 </body>
 </html>
