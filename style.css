@@ -144,7 +144,8 @@ body.dark-theme .navbar .logo {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    width: 140px;
     font-weight: 600;
     color: var(--primary);
     font-size: 13px;
@@ -162,7 +163,8 @@ body.dark-theme .navbar .logo {
 }
 .navbar.shrunk .dropdown-btn {
     padding: 6px 10px;
-    gap: 0;
+    width: auto;
+    justify-content: center;
 }
 
 .dropdown-content {
@@ -346,9 +348,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transition: 0.3s; 
     display: inline-block; 
 }
-.btn .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.btn .lang-content.jp { font-family: 'Hina Mincho', serif; }
-.btn .lang-content.en { font-family: 'Times New Roman', serif; }
+
 .btn-primary { background: var(--primary); color: var(--bg-card); border: 2px solid var(--primary); }
 .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 .btn-secondary { border: 2px solid var(--primary); color: var(--primary); }
@@ -359,32 +359,56 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 .icon-link { color: var(--primary); font-size: 1.3rem; transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
+/* --- 區塊底色與深色模式分隔線 --- */
 .resume-section { 
     padding: 8rem 10%; 
     background: linear-gradient(to bottom, var(--bg-main) 0px, var(--white) 100px, var(--white) 100%);
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, border-top 0.3s;
 }
 
 .blog-section {
     padding: 8rem 10%;
     background: linear-gradient(to bottom, var(--white) 0px, var(--bg-main) 100px, var(--bg-main) calc(100% - 100px), var(--bg-card) 100%);
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, border-top 0.3s;
+}
+
+.credits-section { 
+    padding: 4rem 10%; 
+    background: var(--bg-card); 
+    transition: background-color 0.3s, border-top 0.3s; 
+}
+
+body.dark-theme .resume-section,
+body.dark-theme .blog-section,
+body.dark-theme .credits-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
-
 .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 1rem auto 4rem; }
 .category-title { color: var(--primary); }
-
-.credits-section { padding: 4rem 10%; background: var(--bg-card); transition: background-color 0.3s; }
 .credits-content { max-width: 600px; margin: 0 auto; text-align: center; }
-.credits-list { list-style: none; padding: 0; color: var(--text); }
+.credits-list { list-style: none; padding: 0; color: var(--text); font-family: 'Inter', sans-serif; }
 .credits-list li { margin-bottom: 1rem; font-size: 0.95rem; }
 .credits-list a { color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s; }
 .credits-list a:hover { color: var(--accent); text-decoration: underline; }
-
 .footer { padding: 4rem; text-align: center; background: var(--bg-card); color: var(--text); font-size: 0.8rem; transition: background-color 0.3s; }
+
+/* --- 板塊內文字型設定 --- */
+.profile-title.lang-content.zh, .bio-text.lang-content.zh, .resume-section .lang-content.zh, .blog-section .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.profile-title.lang-content.jp, .bio-text.lang-content.jp, .resume-section .lang-content.jp, .blog-section .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
+.profile-title.lang-content.en, .bio-text.lang-content.en, .resume-section .lang-content.en, .blog-section .lang-content.en { font-family: 'Times New Roman', serif; }
+
+/* --- 板塊標題字型設定 (放置於內文下方以覆蓋層級) --- */
+.section-title .lang-content.zh, .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.section-title .lang-content.jp, .category-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
+.section-title .lang-content.en, .category-title .lang-content.en { font-family: 'Times New Roman', serif; }
+
+/* --- 排除按鈕字型設定 --- */
+.btn .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.btn .lang-content.jp { font-family: 'Hina Mincho', serif; }
+.btn .lang-content.en { font-family: 'Times New Roman', serif; }
 
 /* 手機版設定，防止膠囊與方塊重疊 */
 @media (max-width: 992px) {
