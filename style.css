@@ -357,7 +357,7 @@ body.dark-theme .hero-decor {
     color: #d6ab4a; /* 暗色模式較亮的琥珀金 */
 }
 
-.quote-jp {
+.quote-jp, .quote-zh {
     writing-mode: vertical-rl;
     font-size: 1.15rem;
     letter-spacing: 4px;
@@ -460,10 +460,10 @@ body.dark-theme .section-card {
 .main-headline .lang-content.jp, .section-title .lang-content.jp, .category-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
 .main-headline .lang-content.en, .section-title .lang-content.en, .category-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
-/* --- 排除按鈕字型設定 --- */
-.btn .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.btn .lang-content.jp { font-family: 'Hina Mincho', serif; }
-.btn .lang-content.en { font-family: 'Times New Roman', serif; }
+/* --- 排除按鈕字型設定，並將中日文改為無襯線粗體提升可視性 --- */
+.btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
+.btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
+.btn .lang-content.en { font-family: 'Inter', sans-serif; font-weight: 700; }
 
 /* 手機版與極窄螢幕設定 */
 @media (max-width: 992px) {
