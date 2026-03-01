@@ -17,6 +17,7 @@ body.dark-theme {
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+/* 平滑滾動設定 */
 html { scroll-behavior: smooth; }
 
 /* 宣告自訂字型：Noto Serif TC */
@@ -115,8 +116,8 @@ body.dark-theme .navbar.shrunk {
     background: rgba(30, 30, 30, 0.95);
 }
 body.dark-theme .navbar .logo {
-    text-shadow: none; /* 移除舊有的 text-shadow */
-    filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.5)); /* 使用 drop-shadow 提升 COLRv1 黑暗模式可視度 */
+    text-shadow: none; 
+    filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.5)); 
 }
 
 .nav-links {
@@ -140,7 +141,7 @@ body.dark-theme .navbar .logo {
 .dropdown-btn {
     font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     background: transparent;
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary); /* 邊緣微加粗 */
     padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -278,6 +279,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transform: scale(1.5); 
 }
 
+/* 當滑鼠懸停或滾動至該區塊時顯示對應文字 */
 .dot-nav-item:hover .dot-label,
 .dot-nav-item.active .dot-label {
     opacity: 1;
@@ -340,7 +342,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 
 .cta-group { display: flex; gap: 1.5rem; }
 .btn { 
-    padding: 0;
+    padding: 2px 0 0 0; /* 文字微調向下增加排版呼吸感 */
     width: 260px;
     height: 54px;
     display: inline-flex;
@@ -350,8 +352,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     text-decoration: none; 
     border-radius: 24px; 
     font-weight: 700; 
-    font-size: 0.95rem; 
-    letter-spacing: 0.5px; 
+    font-size: 1.05rem; /* 字體稍微拉大 */
+    letter-spacing: 1.5px; /* 微調字距提升專業度 */
     transition: 0.3s; 
     box-sizing: border-box;
     white-space: nowrap;
@@ -363,8 +365,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 .btn-secondary:hover { transform: translateY(-5px); background: rgba(0,0,0,0.04); }
 body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
-.social-icons { display: flex; justify-content: center; gap: 1.2rem; margin-top: 1rem; }
-.icon-link { color: var(--primary); font-size: 1.3rem; transition: 0.3s; }
+.social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+.icon-link { color: var(--primary); font-size: 1.8rem; /* 圖示改大 */ transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
 /* --- 卡片包覆板塊樣式 --- */
@@ -423,6 +425,8 @@ body.dark-theme .section-card {
     .btn { width: 100%; max-width: 280px; }
     .dot-nav { display: none; }
     .section-card { padding: 3rem 5%; margin-bottom: 2rem; }
+    /* 手機端停用圖示點擊浮動效果 */
+    .icon-link:hover { transform: none; } 
 }
 
 @media (max-width: 480px) {
