@@ -28,7 +28,7 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-    font-family: 'Inter', 'Hina Mincho', 'Noto Serif TC', 'Noto Serif TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    font-family: 'Inter', 'Hina Mincho', 'Noto Serif TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     background-color: var(--bg-main);
     color: var(--text);
     line-height: 1.6;
@@ -36,9 +36,47 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* 防止頁面橫向溢出導致的底部與側邊隱形空白 */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 全域基礎語言字型 (保留按鈕與導覽列的無襯線設定) */
 .lang-content.zh { font-family: 'Noto Serif TC', 'Inter', sans-serif; }
 .lang-content.jp { font-family: 'Hina Mincho', 'Noto Sans JP', 'Inter', sans-serif; }
 .lang-content.en { font-family: 'Inter', sans-serif; }
+
+/* --- 英文板塊內文專屬字型與字號補償 (Libre Baskerville) --- */
+.hero-container .lang-content.en, 
+.section-card .lang-content.en {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.05em; /* 基本微放大補償 */
+}
+
+/* --- 中文板塊內文專屬字型 --- */
+.hero-container .lang-content.zh, 
+.section-card .lang-content.zh {
+    font-family: 'Noto Serif TC', serif; /* 您可以將 'Noto Serif TC' 替換成任何您想要的字型 */
+    /* font-size: 1em; 如果需要微調大小，可以取消這行的註解並修改數值 */
+}
+
+/* --- 日文板塊內文專屬字型 --- */
+.hero-container .lang-content.jp, 
+.section-card .lang-content.jp {
+    font-family: 'Zen Old Mincho', serif; /* 您可以將 'Hina Mincho' 替換成 'Zen Old Mincho' 或其他日文字型 */
+    /* font-size: 1em; 如果需要微調大小，可以取消這行的註解並修改數值 */
+}
+
+h4.lang-content.en { font-size: 1.15em; }
+/* --- 英文版個人簡介專屬排版 --- */
+.bio-text.lang-content.en { 
+    font-size: 1.25rem; 
+    line-height: 1.2; /* 將行距從全域的 1.8 縮小至 1.4，讓英文排版更緊湊優雅 */
+}
+.item-detail p.lang-content.en, 
+.item-detail .job-title.lang-content.en { font-size: 1.05rem; }
+.blog-content .lang-content.en { font-size: 1.1rem; }
 
 body::before {
     content: "";
@@ -50,7 +88,7 @@ body::before {
     z-index: 9999;
 }
 
-/* --- 上方膠囊導覽列 --- */
+/* --- 上方膠囊導覽列 (放慢過渡動畫) --- */
 .navbar {
     display: flex; 
     justify-content: space-between; 
@@ -70,10 +108,10 @@ body::before {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    transition: max-width 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
-                padding 0.5s ease, 
-                margin 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
-                background 0.3s;
+    transition: max-width 1s cubic-bezier(0.25, 1, 0.3, 1), 
+                padding 0.8s ease, 
+                margin 1s cubic-bezier(0.25, 1, 0.3, 1), 
+                background 0.5s;
 }
 
 .navbar.shrunk {
@@ -94,10 +132,10 @@ body::before {
     opacity: 1;
     overflow: hidden;
     white-space: nowrap;
-    transition: max-width 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
-                opacity 0.4s ease, 
-                margin 0.4s ease,
-                font-size 0.3s;
+    transition: max-width 1s cubic-bezier(0.25, 1, 0.3, 1), 
+                opacity 0.7s ease, 
+                margin 0.7s ease,
+                font-size 0.5s;
     color: #e69c00; 
     text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3); 
 }
@@ -141,7 +179,7 @@ body.dark-theme .navbar .logo {
 .dropdown-btn {
     font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     background: transparent;
-    border: 1px solid var(--primary); /* 邊緣更窄 */
+    border: 1px solid var(--primary); 
     padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -286,15 +324,15 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     transform: translateX(0); 
 }
 
-/* --- 個人簡介板塊：優化構圖與視覺重心 --- */
+/* --- 個人簡介板塊 --- */
 .hero-container {
     display: flex;
     min-height: 100vh;
     align-items: center;
-    justify-content: center;
-    padding: 120px 5% 4rem; 
-    gap: 6rem;
-    max-width: 1200px;
+    justify-content: flex-start;
+    padding: 120px 5% 4rem 2%; 
+    gap: 10rem; 
+    max-width: 1300px; 
     margin: 0 auto;
 }
 
@@ -339,21 +377,37 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 }
 
 .content-area { 
-    flex: 1; 
+    flex: 0 1 650px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/* --- 主標題全局排版設定 --- */
 .main-headline { 
     font-family: 'Playfair Display', serif; 
     font-size: 4.5rem; 
     line-height: 1.15; 
     color: var(--primary); 
     margin-bottom: 2rem; 
+    width: 100%;
+    display: block;
 }
 
-/* 文字排版優化：行高、字距、對齊方式與最大寬度 */
+.main-headline div {
+    width: 100%;
+    display: block;
+}
+
+.main-headline span[class^="line-"] {
+    display: block;
+}
+
+/* 全域適用：中、日、英 階梯式對齊 (左、中、右) */
+.main-headline .line-1 { text-align: left; padding-left: 5%; }
+.main-headline .line-2 { text-align: center; }
+.main-headline .line-3 { text-align: right; padding-right: 5%; }
+
 .bio-text { 
     font-size: 1.1rem; 
     color: var(--text); 
@@ -362,6 +416,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     line-height: 1.8; 
     letter-spacing: 0.5px;
     text-align: justify;
+    text-justify: inter-ideograph; 
 }
 
 .cta-group { display: flex; gap: 1.5rem; }
@@ -393,16 +448,21 @@ body.dark-theme .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 .icon-link { color: var(--primary); font-size: 1.8rem; transition: 0.3s; }
 .icon-link:hover { transform: translateY(-3px); color: var(--accent); }
 
-/* --- 卡片包覆板塊樣式 --- */
+/* --- 卡片包覆板塊 --- */
 .section-card {
     background: var(--bg-card);
     border-radius: 24px;
-    width: 90%;
-    max-width: 1200px;
+    width: 95%; 
+    max-width: 1300px; 
     margin: 0 auto 4rem auto;
     padding: 4rem 10%;
     box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.3s;
+}
+
+.section-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.12), 0 5px 15px rgba(0,0,0,0.06);
 }
 
 body.dark-theme .section-card {
@@ -410,14 +470,84 @@ body.dark-theme .section-card {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-#credits.section-card {
-    margin-bottom: 2rem;
+body.dark-theme .section-card:hover {
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#credits.section-card { margin-bottom: 2rem; }
+
+/* --- 履歷板塊排版 --- */
+.resume-item { margin-bottom: 3rem; }
+.resume-item:last-child { margin-bottom: 0; }
+.item-detail { margin-bottom: 1.8rem; }
+.item-detail:last-child { margin-bottom: 0; }
+
+.item-detail .date { 
+    display: inline-block; 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    color: var(--primary); 
+    opacity: 0.7; 
+    margin-bottom: 0.4rem; 
+    letter-spacing: 0.5px;
+}
+.item-detail h4 { 
+    font-size: 1.25rem; 
+    color: var(--primary); 
+    margin-bottom: 0.2rem; 
+}
+.item-detail .job-title, .item-detail p { 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    color: var(--text); 
+    margin-bottom: 0.5rem; 
+    opacity: 0.9; 
+}
+
+/* --- 技能泡泡樣式 (Bubble UI) --- */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+.skill-item {
+    background-color: var(--bg-main);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.skill-item:hover {
+    transform: translateY(-4px) scale(1.03);
+    background-color: var(--primary);
+    color: var(--bg-card);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+body.dark-theme .skill-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--primary);
+}
+
+body.dark-theme .skill-item:hover {
+    background-color: var(--primary);
+    color: var(--bg-card);
+    border-color: var(--primary);
 }
 
 .blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
 .section-title { text-align: center; font-size: 2.5rem; color: var(--primary); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 1rem auto 4rem; }
-.category-title { color: var(--primary); }
+
 .credits-content { max-width: 600px; margin: 0 auto; text-align: center; }
 .credits-list { list-style: none; padding: 0; color: var(--text); font-family: 'Inter', sans-serif; }
 .credits-list li { margin-bottom: 1rem; font-size: 0.95rem; }
@@ -425,36 +555,89 @@ body.dark-theme .section-card {
 .credits-list a:hover { color: var(--accent); text-decoration: underline; }
 .footer { padding: 4rem; text-align: center; color: var(--text); font-size: 0.8rem; transition: background-color 0.3s; }
 
-/* --- 板塊內文字型設定 --- */
-.hero-container .lang-content.zh, .section-card .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.hero-container .lang-content.jp, .section-card .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
-.hero-container .lang-content.en, .section-card .lang-content.en { font-family: 'Times New Roman', serif; }
+/* --- 板塊標題與特殊類別標題字型設定 --- */
+.main-headline .lang-content.zh, .section-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.main-headline .lang-content.jp, .section-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
+.main-headline .lang-content.en, .section-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
-/* --- 板塊標題字型設定 (包含主標題) --- */
-.main-headline .lang-content.zh, .section-title .lang-content.zh, .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.main-headline .lang-content.jp, .section-title .lang-content.jp, .category-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
-.main-headline .lang-content.en, .section-title .lang-content.en, .category-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
+.category-title { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.4rem;}
+.category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; font-weight: 700; font-weight: 700; letter-spacing: 2px;}
+.category-title .lang-content.jp { font-family: 'Zen Old Mincho', serif; font-weight: 700; font-weight: 700; letter-spacing: 2px;}
+.category-title .lang-content.en { font-family: 'Libre Baskerville', serif; font-weight: 700; letter-spacing: 1px;}
 
 /* --- 排除按鈕字型設定 --- */
 .btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
 .btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
 .btn .lang-content.en { font-family: 'Inter', sans-serif; font-weight: 700; }
 
-/* 手機版與極窄螢幕設定 */
+/* 手機版與平板設定 */
 @media (max-width: 992px) {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
-    .main-headline { font-size: 3rem; }
+    
+    .main-headline { font-size: 2.8rem; line-height: 1.25; }
+    
+    .content-area { width: 100%; align-items: center; }
+    .bio-text { 
+        text-align: justify; 
+        text-justify: inter-ideograph;
+        width: 100%;
+        padding: 0 10px; 
+    }
+    
     .cta-group { flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
     .btn { width: 100%; max-width: 280px; }
     .dot-nav { display: none; }
     .section-card { padding: 3rem 5%; margin-bottom: 2rem; }
     .icon-link:hover { transform: none; } 
+    /* --- 修復手機與平板端的置中偏移問題 --- */
+    
+    /* 1. 覆寫桌機版不對稱的左右內邊距，將兩側統一為 5% 完美置中 */
+    .hero-container { 
+        padding-left: 5%; 
+        padding-right: 5%; 
+    }
+    
+    /* 2. 解除頭像卡片原本 380px 的死寬度限制，避免撐破螢幕邊界導致偏移 */
+    .profile-card {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 350px; /* 限制最大寬度以適應所有手機型號 */
+        margin: 0 auto;   /* 強制卡片本身在容器內絕對居中 */
+        padding: 2.5rem 1.5rem; /* 稍微縮小手機版卡片內的留白，比例更好看 */
+    }
 }
 
+/* 極窄螢幕(手機端)設定 */
 @media (max-width: 480px) {
     .navbar { padding: 0.6rem 4%; }
     .navbar .logo { font-size: 1.1rem; letter-spacing: 0px; max-width: 120px; }
-    .nav-controls { gap: 6px; }
+    .nav-controls { gap: 16px; } 
     .dropdown-btn { width: 115px; padding: 5px 8px; font-size: 12px; }
+    
+    .main-headline { font-size: 2.4rem; line-height: 1.3; margin-bottom: 1.5rem; }
+    .main-headline .lang-content.en { font-size: 2.1rem; line-height: 1.2; }
+    /* --- 消除手機端底部一大段空白 --- */
+    #credits.section-card { 
+        margin-bottom: 1rem; 
+    }
+    .footer { 
+        padding: 1.5rem 1rem 2rem; /* 大幅縮減原本 4rem 的超大內邊距 */
+    }
+    .footer p {
+        margin: 0; /* 消除文字預設的底部外推空間 */
+    }
+}
+
+/* --- 點狀導航自動隱藏特效 --- */
+.dot-nav {
+    /* 增加平滑淡出的過渡動畫 */
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* 觸發隱藏時的狀態 */
+.dot-nav.idle-hidden {
+    opacity: 0 !important;
+    visibility: hidden;
+    pointer-events: none; /* 隱藏時防止誤觸 */
 }
