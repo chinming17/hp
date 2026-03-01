@@ -319,19 +319,18 @@
             lastScrollTop = scrollY;
         }
 
-        // Scrollspy 圓點導覽邏輯（精確計算範圍）
+        // Scrollspy 圓點導覽邏輯（改良版：根據視角中心線判斷，徹底解決短板塊被跳過的問題）
         let current = '';
+        const scrollCenter = scrollY + (window.innerHeight / 3); 
+        
         sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            // 減去導覽列與些許緩衝空間以提早觸發
-            const sectionTop = section.offsetTop - 150; 
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            if (scrollCenter >= section.offsetTop) {
                 current = section.getAttribute('id');
             }
         });
 
-        // 觸底偵測：如果滑動到頁面最底端，強制切換至最後一個板塊(鳴謝)
-        if ((window.innerHeight + Math.round(scrollY)) >= document.documentElement.scrollHeight - 50) {
+        // 觸底偵測：滑動到頁面最底端時強制切換至最後一個板塊
+        if ((window.innerHeight + Math.round(scrollY)) >= document.documentElement.scrollHeight - 10) {
             current = 'credits';
         }
 
