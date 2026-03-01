@@ -291,16 +291,44 @@
             document.body.classList.add('dark-theme');
             document.querySelector('#theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
+        
+        // 初始化時檢查一次所在區塊
+        updateActiveSection();
     };
     
-    //導覽列滾動縮放與iOS邊界回彈修復
-    let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
+    const sections = document.querySelectorAll('main[id], section[id]');
+    const navItems = document.querySelectorAll('.dot-nav-item');
+    let lastScrollTop = 0;
 
+    function updateActiveSection() {
+        let current = '';
+        const scrollY = window.pageYOffset;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            // 當捲動超過區塊頂部往下 1/3 的位置時，視為進入該區塊
+            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    // 合併導覽列滾動縮放、邊界回彈修復與右側點狀導航更新
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         
+        updateActiveSection();
+
         if (scrollTop <= 0) {
             navbar.classList.remove('shrunk');
             lastScrollTop = 0;
