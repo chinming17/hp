@@ -141,7 +141,7 @@ body.dark-theme .navbar .logo {
 .dropdown-btn {
     font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
     background: transparent;
-    border: 1px solid var(--primary); /* 邊緣更窄 */
+    border: 1px solid var(--primary); 
     padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -293,8 +293,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     align-items: center;
     justify-content: center;
     padding: 120px 5% 4rem; 
-    gap: 6rem;
-    max-width: 1200px;
+    gap: 4.5rem; /* 縮小間距使畫面更緊湊 */
+    max-width: 1050px; /* 控制最大寬度避免左右兩側太空 */
     margin: 0 auto;
 }
 
@@ -353,7 +353,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     margin-bottom: 2rem; 
 }
 
-/* 文字排版優化：行高、字距、對齊方式與最大寬度 */
+/* 文字排版優化：行高、字距與完美左右對齊 */
 .bio-text { 
     font-size: 1.1rem; 
     color: var(--text); 
@@ -362,6 +362,7 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     line-height: 1.8; 
     letter-spacing: 0.5px;
     text-align: justify;
+    text-justify: inter-ideograph; /* 針對中文的完美兩端對齊 */
 }
 
 .cta-group { display: flex; gap: 1.5rem; }
@@ -445,6 +446,16 @@ body.dark-theme .section-card {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     .main-headline { font-size: 3rem; }
+    
+    /* 手機版強制段落文字對齊，覆寫置中 */
+    .content-area { align-items: center; }
+    .bio-text { 
+        text-align: justify; 
+        text-justify: inter-ideograph;
+        width: 100%;
+        padding: 0 10px; /* 增加邊距讓文字不會貼齊螢幕邊緣 */
+    }
+    
     .cta-group { flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
     .btn { width: 100%; max-width: 280px; }
     .dot-nav { display: none; }
