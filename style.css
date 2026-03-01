@@ -271,12 +271,15 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     white-space: nowrap;
 }
 
-.dot-nav-item:hover .dot {
+/* Hover 與 Active 狀態：觸發圓點放大與文字顯示 */
+.dot-nav-item:hover .dot,
+.dot-nav-item.active .dot {
     opacity: 1;
     transform: scale(1.5); 
 }
 
-.dot-nav-item:hover .dot-label {
+.dot-nav-item:hover .dot-label,
+.dot-nav-item.active .dot-label {
     opacity: 1;
     visibility: visible;
     transform: translateX(0); 
@@ -427,8 +430,8 @@ body.dark-theme .credits-section {
 }
 
 @media (max-width: 480px) {
-    .navbar { padding: 0.6rem 5%; }
-    .navbar .logo { font-size: 1.1rem; letter-spacing: 0px; }
-    .nav-controls { gap: 8px; }
-    .dropdown-btn { width: 125px; padding: 6px; font-size: 12px; }
+    .navbar { padding: 0.6rem 4%; }
+    .navbar .logo { font-size: 1.1rem; letter-spacing: 0px; max-width: 120px; }
+    .nav-controls { gap: 6px; }
+    .dropdown-btn { width: 115px; padding: 5px 8px; font-size: 12px; }
 }
