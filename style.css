@@ -95,7 +95,8 @@ body::before {
     white-space: nowrap;
     transition: max-width 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
                 opacity 0.4s ease, 
-                margin 0.4s ease;
+                margin 0.4s ease,
+                font-size 0.3s;
     color: #e69c00; 
     text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3); 
 }
@@ -332,13 +333,16 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 
 .content-area { flex: 1; }
 .main-headline { font-family: 'Playfair Display', serif; font-size: 4.8rem; line-height: 1.1; color: var(--primary); margin-bottom: 2rem; }
-.main-headline .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 .bio-text { font-size: 1.1rem; color: var(--text); margin-bottom: 2.5rem; max-width: 550px; }
 
 .cta-group { display: flex; gap: 1.5rem; }
 .btn { 
-    padding: 1rem 2rem; 
-    min-width: 160px; 
+    padding: 0;
+    width: 260px;
+    height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     text-decoration: none; 
     border-radius: 24px; 
@@ -346,7 +350,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     font-size: 0.95rem; 
     letter-spacing: 0.5px; 
     transition: 0.3s; 
-    display: inline-block; 
+    box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .btn-primary { background: var(--primary); color: var(--bg-card); border: 2px solid var(--primary); }
@@ -385,7 +390,7 @@ body.dark-theme .credits-section {
 }
 
 .blog-content { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text); }
-.section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); }
+.section-title { text-align: center; font-size: 2.5rem; color: var(--primary); }
 .underline { width: 50px; height: 3px; background: var(--primary); margin: 1rem auto 4rem; }
 .category-title { color: var(--primary); }
 .credits-content { max-width: 600px; margin: 0 auto; text-align: center; }
@@ -396,25 +401,34 @@ body.dark-theme .credits-section {
 .footer { padding: 4rem; text-align: center; background: var(--bg-card); color: var(--text); font-size: 0.8rem; transition: background-color 0.3s; }
 
 /* --- 板塊內文字型設定 --- */
-.profile-title.lang-content.zh, .bio-text.lang-content.zh, .resume-section .lang-content.zh, .blog-section .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.profile-title.lang-content.jp, .bio-text.lang-content.jp, .resume-section .lang-content.jp, .blog-section .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
-.profile-title.lang-content.en, .bio-text.lang-content.en, .resume-section .lang-content.en, .blog-section .lang-content.en { font-family: 'Times New Roman', serif; }
+.hero-container .lang-content.zh, .resume-section .lang-content.zh, .blog-section .lang-content.zh, .credits-section .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.hero-container .lang-content.jp, .resume-section .lang-content.jp, .blog-section .lang-content.jp, .credits-section .lang-content.jp { font-family: 'Zen Old Mincho', serif; }
+.hero-container .lang-content.en, .resume-section .lang-content.en, .blog-section .lang-content.en { font-family: 'Times New Roman', serif; }
+/* 鳴謝區塊英文預設使用 body 設定的英文字型 (Inter)，不覆蓋 */
 
-/* --- 板塊標題字型設定 (放置於內文下方以覆蓋層級) --- */
-.section-title .lang-content.zh, .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
-.section-title .lang-content.jp, .category-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
-.section-title .lang-content.en, .category-title .lang-content.en { font-family: 'Times New Roman', serif; }
+/* --- 板塊標題字型設定 (包含主標題) --- */
+.main-headline .lang-content.zh, .section-title .lang-content.zh, .category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; }
+.main-headline .lang-content.jp, .section-title .lang-content.jp, .category-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
+.main-headline .lang-content.en, .section-title .lang-content.en, .category-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
 /* --- 排除按鈕字型設定 --- */
 .btn .lang-content.zh { font-family: 'Noto Serif TC', serif; }
 .btn .lang-content.jp { font-family: 'Hina Mincho', serif; }
 .btn .lang-content.en { font-family: 'Times New Roman', serif; }
 
-/* 手機版設定，防止膠囊與方塊重疊 */
+/* 手機版與極窄螢幕設定 */
 @media (max-width: 992px) {
     .navbar { padding: 1rem 5%; }
     .hero-container { flex-direction: column; text-align: center; gap: 3rem; padding-top: 120px; }
     .main-headline { font-size: 3rem; }
-    .cta-group { justify-content: center; }
+    .cta-group { flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
+    .btn { width: 100%; max-width: 280px; }
     .dot-nav { display: none; }
+}
+
+@media (max-width: 480px) {
+    .navbar { padding: 0.6rem 5%; }
+    .navbar .logo { font-size: 1.1rem; letter-spacing: 0px; }
+    .nav-controls { gap: 8px; }
+    .dropdown-btn { width: 125px; padding: 6px; font-size: 12px; }
 }
