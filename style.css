@@ -590,6 +590,22 @@ body.dark-theme .skill-item:hover {
     .dot-nav { display: none; }
     .section-card { padding: 3rem 5%; margin-bottom: 2rem; }
     .icon-link:hover { transform: none; } 
+    /* --- 修復手機與平板端的置中偏移問題 --- */
+    
+    /* 1. 覆寫桌機版不對稱的左右內邊距，將兩側統一為 5% 完美置中 */
+    .hero-container { 
+        padding-left: 5%; 
+        padding-right: 5%; 
+    }
+    
+    /* 2. 解除頭像卡片原本 380px 的死寬度限制，避免撐破螢幕邊界導致偏移 */
+    .profile-card {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 350px; /* 限制最大寬度以適應所有手機型號 */
+        margin: 0 auto;   /* 強制卡片本身在容器內絕對居中 */
+        padding: 2.5rem 1.5rem; /* 稍微縮小手機版卡片內的留白，比例更好看 */
+    }
 }
 
 /* 極窄螢幕(手機端)設定 */
