@@ -293,36 +293,51 @@
         }
     };
     
-    //導覽列滾動縮放與iOS邊界回彈修復
+    // 導覽列滾動縮放、iOS邊界回彈修復與圓點Scrollspy連動
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
+    const sections = document.querySelectorAll('main, section[id]');
+    const navItems = document.querySelectorAll('.dot-nav-item');
 
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         
+        // Navbar 邏輯
         if (scrollTop <= 0) {
             navbar.classList.remove('shrunk');
             lastScrollTop = 0;
-            return;
-        }
-        
-        if (scrollTop >= maxScroll) {
+        } else if (scrollTop >= maxScroll) {
             lastScrollTop = scrollTop;
-            return;
-        }
-        
-        if (scrollTop > 50) {
-            if (scrollTop > lastScrollTop) {
-                navbar.classList.add('shrunk');
+        } else {
+            if (scrollTop > 50) {
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.add('shrunk');
+                } else {
+                    navbar.classList.remove('shrunk');
+                }
             } else {
                 navbar.classList.remove('shrunk');
             }
-        } else {
-            navbar.classList.remove('shrunk');
+            lastScrollTop = scrollTop;
         }
-        
-        lastScrollTop = scrollTop;
+
+        // Scrollspy 圓點導覽邏輯
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollTop >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href').includes(current)) {
+                item.classList.add('active');
+            }
+        });
     }, { passive: true });
     </script>
 </body>
