@@ -806,8 +806,8 @@ body.dark-theme .social-icons .icon-link:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px !important; /*完美的正方形寬度*/
-    height: 38px !important; /*完美的正方形高度*/
+    width: 28px !important; /*完美的正方形寬度*/
+    height: 28px !important; /*完美的正方形高度*/
     background-color: var(--primary); /*方塊底色*/
     color: var(--bg-card) !important; /*內部圖示顏色(製造鏤空感)*/
     border-radius: 6px; /*💡這裡控制圓角。若要「絕對直角」請改成0*/
