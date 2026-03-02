@@ -784,3 +784,19 @@ body.dark-theme .skill-item:hover {
     visibility: hidden;
     pointer-events: none; 
 }
+
+/* --- 黑色模式優化：聯絡方式文字與圖示 --- */
+body.dark-theme .contact-label {
+    /* 使用與副標題一致的淺灰色 heading 顏色，提升高對比度 */
+    color: var(--primary) !important; 
+}
+
+body.dark-theme .social-icons .icon-link {
+    /* 讓圖示初始狀態變為純白色，極致醒目 */
+    color: var(--accent) !important; 
+}
+
+/* 🌟 精準覆蓋：保留黑色模式下的橘金色懸浮(hover)特效 */
+body.dark-theme .social-icons .icon-link:hover {
+    color: #e69c00 !important; /* 滑鼠懸浮時變為亮眼的橘金色 */
+}
