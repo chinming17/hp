@@ -800,3 +800,35 @@ body.dark-theme .social-icons .icon-link {
 body.dark-theme .social-icons .icon-link:hover {
     color: #e69c00 !important; /* 滑鼠懸浮時變為亮眼的橘金色 */
 }
+
+/*---終極完美對齊：CSS正方形容器法---*/
+.square-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px !important; /*完美的正方形寬度*/
+    height: 38px !important; /*完美的正方形高度*/
+    background-color: var(--primary); /*方塊底色*/
+    color: var(--bg-card) !important; /*內部圖示顏色(製造鏤空感)*/
+    border-radius: 6px; /*💡這裡控制圓角。若要「絕對直角」請改成0*/
+    font-size: 1.25rem !important; /*控制內部圖示的大小*/
+    text-decoration: none;
+    transition: all 0.3s ease !important;
+}
+
+/*懸浮特效：整個方塊變橘金色，並微幅上浮*/
+.square-btn:hover {
+    background-color: #e69c00 !important;
+    color: #ffffff !important;
+    transform: translateY(-4px) !important;
+}
+
+/*黑色模式優化：確保高對比度*/
+body.dark-theme .square-btn {
+    background-color: var(--accent); /*深色模式下的方塊顏色*/
+    color: var(--bg-card) !important;
+}
+body.dark-theme .square-btn:hover {
+    background-color: #e69c00 !important;
+    color: #ffffff !important;
+}
