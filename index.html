@@ -76,7 +76,7 @@
 </nav>
 
 <nav class="navbar">
-    <div class="logo">CHINMING.C</div>
+    <a href="#" class="logo" style="text-decoration: none;" aria-label="回到頂部">CHINMING.C</a>
     <div class="nav-links">
         <div class="nav-controls">
             <div class="lang-dropdown">
@@ -117,9 +117,9 @@
     <span class="contact-label lang-content en" style="display:none;">Contact:</span>
     
    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/chinming17" target="_blank" class="square-btn" aria-label="前往 LinkedIn 個人檔案">
-            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-        </a>
+        <a href="https://www.linkedin.com/in/chinming17" target="_blank" rel="noopener noreferrer" class="square-btn" aria-label="前往 LinkedIn 個人檔案">
+    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+</a>
         <a href="mailto:cchinming17@gmail.com" class="square-btn" aria-label="發送電子郵件">
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
         </a>
@@ -165,7 +165,7 @@
         </section>
     </main>
 
-    <section id="resume" class="section-card">
+    <section id="resume" class="section-card reveal-element">
         <div class="resume-header">
             <h2 class="section-title">
                 <span class="lang-content zh">履歷</span>
@@ -460,6 +460,24 @@
 
     // 網頁初次載入時先啟動一次計時器
     resetIdleTimer();
+
+        // === 🌟 滾動淡入動畫觀察器 ===
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // 解除觀察，讓動畫只播放一次
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 }); // 進入畫面 15% 時觸發
+
+    // 為需要特效的卡片加上觀察 (這裡會自動尋找有 .reveal-element 的元素)
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.reveal-element').forEach((el) => {
+            observer.observe(el);
+        });
+    });
     </script>
 </body>
 </html>
