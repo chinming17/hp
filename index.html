@@ -18,10 +18,11 @@
 
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Inter:wght@300;400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Limelight&family=Nabla&family=Noto+Sans+JP:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Inter:wght@300;400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Limelight&family=Nabla&family=Noto+Sans+JP:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=9">
+    
+    <link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
 
@@ -65,21 +66,21 @@
     <div class="nav-links">
         <div class="nav-controls">
             <div class="lang-dropdown">
-                <button class="dropdown-btn" onclick="toggleLangMenu()">
+                <button class="dropdown-btn" onclick="toggleLangMenu()" aria-label="切換語言">
                     <span style="display:flex; align-items:center; gap:8px;">
-                        <img id="current-flag" src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon">
+                        <img id="current-flag" src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon" alt="Current Language">
                         <span id="current-lang-text">繁體中文</span>
                     </span>
                     <i class="fa-solid fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content" id="langMenu">
-                    <a href="#" onclick="setLang('zh', '繁體中文', './public/Flags-Rounded_Rectangle/Taiwan.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon" loading="lazy"> 繁體中文</a>
-                    <a href="#" onclick="setLang('jp', '日本語', './public/Flags-Rounded_Rectangle/Japan.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/Japan.png" class="flag-icon"> 日本語</a>
-                    <a href="#" onclick="setLang('en', 'English', './public/Flags-Rounded_Rectangle/United_Kingdom.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/United_Kingdom.png" class="flag-icon"> English</a>
+                    <a href="#" onclick="setLang('zh', '繁體中文', './public/Flags-Rounded_Rectangle/Taiwan.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/Taiwan.png" class="flag-icon" loading="lazy" alt="Taiwan Flag"> 繁體中文</a>
+                    <a href="#" onclick="setLang('jp', '日本語', './public/Flags-Rounded_Rectangle/Japan.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/Japan.png" class="flag-icon" loading="lazy" alt="Japan Flag"> 日本語</a>
+                    <a href="#" onclick="setLang('en', 'English', './public/Flags-Rounded_Rectangle/United_Kingdom.png'); return false;"><img src="./public/Flags-Rounded_Rectangle/United_Kingdom.png" class="flag-icon" loading="lazy" alt="UK Flag"> English</a>
                 </div>
             </div>
 
-            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="切換深色模式">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
@@ -89,7 +90,7 @@
     <main id="about" class="hero-container">
         <section class="profile-card">
             <div class="profile-img-container">
-                <img src="./public/avatar.webp" alt="Chinming" class="profile-img">
+                <img src="./public/avatar.webp" alt="Chinming Chan Profile" class="profile-img">
             </div>
             <h2 class="profile-name">Chinming Chan</h2>
             <p class="profile-title lang-content zh">譯者・諮詢師</p>
@@ -102,11 +103,11 @@
     <span class="contact-label lang-content en" style="display:none;">Contact:</span>
     
    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/chinming17" target="_blank" class="square-btn">
-            <i class="fa-brands fa-linkedin-in"></i>
+        <a href="https://www.linkedin.com/in/chinming17" target="_blank" class="square-btn" aria-label="前往 LinkedIn 個人檔案">
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
         </a>
-        <a href="mailto:cchinming17@gmail.com" class="square-btn">
-            <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:cchinming17@gmail.com" class="square-btn" aria-label="發送電子郵件">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
         </a>
     </div>
 </div>
