@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinming Chan | Portfolio</title>
-
-    <link rel="canonical" href="https://chinming17.github.io/hp/">
+    
     <link rel="icon" type="image/png" href="./public/favicon/favicon-32x32.png?v=2">
     <link rel="apple-touch-icon" href="./public/favicon/favicon-32x32.png?v=2">
 
@@ -104,9 +103,9 @@
     <span class="contact-label lang-content en" style="display:none;">Contact:</span>
     
    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/chinming17" target="_blank" rel="noopener noreferrer" class="square-btn" aria-label="前往 LinkedIn 個人檔案">
-    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-</a>
+        <a href="https://www.linkedin.com/in/chinming17" target="_blank" class="square-btn" aria-label="前往 LinkedIn 個人檔案">
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+        </a>
         <a href="mailto:cchinming17@gmail.com" class="square-btn" aria-label="發送電子郵件">
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
         </a>
@@ -152,7 +151,7 @@
         </section>
     </main>
 
-    <section id="resume" class="section-card reveal-element">...略...</section>
+    <section id="resume" class="section-card">
         <div class="resume-header">
             <h2 class="section-title">
                 <span class="lang-content zh">履歷</span>
@@ -250,7 +249,7 @@
         </div>
     </section>
 
-    <section id="blog" class="section-card reveal-element">...略...</section>
+    <section id="blog" class="section-card">
         <div class="blog-header">
             <h2 class="section-title">
                 <span class="lang-content zh">部落格</span>
@@ -459,20 +458,6 @@
 
     // 網頁初次載入時先啟動一次計時器
     resetIdleTimer();
-
-        // 滾動淡入動畫觀察器
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            // 如果希望只播放一次動畫，可加上 observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 }); // 進入畫面 15% 時觸發
-
-document.querySelectorAll('.reveal-element').forEach((el) => {
-    observer.observe(el);
-});
     </script>
 </body>
 </html>
