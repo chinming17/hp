@@ -340,10 +340,13 @@
         }
     }
 
-    function setLang(lang, text, flagSrc) {
+   function setLang(lang, text, flagSrc) {
         document.getElementById('current-lang-text').innerText = text;
         document.getElementById('current-flag').src = flagSrc;
         document.getElementById("langMenu").classList.remove("show");
+        
+        // 🌟 新增：動態修改 HTML lang 屬性，優化語音朗讀與 SEO
+        document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : (lang === 'jp' ? 'ja' : 'en');
         
         document.querySelectorAll('.lang-content').forEach(el => {
             el.style.display = 'none';
