@@ -17,8 +17,13 @@ body.dark-theme {
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-/* 平滑滾動設定 */
-html { scroll-behavior: smooth; }
+
+/* 平滑滾動設定與導覽列遮擋修復 */
+html { 
+    scroll-behavior: smooth; 
+    /* 🌟 新增：告訴瀏覽器滾動到錨點時，上方要預留 100px 空間，避免標題被導覽列遮住 */
+    scroll-padding-top: 100px; 
+}
 
 /* 宣告自訂字型：Noto Serif TC */
 @font-face {
@@ -43,7 +48,7 @@ html, body {
     background-color: var(--bg-main); /* 讓底層完整填滿亮色背景 */
 }
 
-/* 🌟 殺手鐧：當觸發深色模式時，強制最底層的 html 也換上深色背景 */
+/* 當觸發深色模式時，強制最底層的 html 也換上深色背景 */
 html:has(body.dark-theme) {
     background-color: #121212;
 }
@@ -157,7 +162,7 @@ body::before {
 
 /* 徹底修復導航欄縮小時 按鈕群組不居中的 Bug */
 .navbar.shrunk .nav-links {
-    margin: 0 !important; /* 🌟 殺手鐧：取消往右擠的推力 */
+    margin: 0 !important; /* 取消往右擠的推力 */
     width: 100% !important;
     justify-content: center !important;
 }
@@ -229,7 +234,7 @@ body.dark-theme .navbar .logo {
     display: none !important;
 }
 
-/* 🌟 核心修復：無視手機版的 115px 固定寬度，強制按鈕寬度自適應 */
+/* 無視手機版的 115px 固定寬度，強制按鈕寬度自適應 */
 .navbar.shrunk .dropdown-btn {
     padding: 6px 10px !important;
     width: auto !important;
@@ -469,6 +474,8 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
     letter-spacing: 0.5px;
     text-align: justify;
     text-justify: inter-ideograph; 
+    /* 🌟 新增：讓瀏覽器自動分配每行字數，避免最後一行只有一兩個字（孤字寡行） */
+    text-wrap: pretty; 
 }
 
 .cta-group { 
@@ -811,7 +818,7 @@ body.dark-theme .social-icons .icon-link:hover {
     height: 28px !important; /*完美的正方形高度*/
     background-color: var(--primary); /*方塊底色*/
     color: var(--bg-card) !important; /*內部圖示顏色(製造鏤空感)*/
-    border-radius: 6px; /*💡這裡控制圓角。若要「絕對直角」請改成0*/
+    border-radius: 6px; /*控制圓角*/
     font-size: 1.25rem !important; /*控制內部圖示的大小*/
     text-decoration: none;
     transition: all 0.3s ease !important;
@@ -832,4 +839,13 @@ body.dark-theme .square-btn {
 body.dark-theme .square-btn:hover {
     background-color: #e69c00 !important;
     color: #ffffff !important;
+}
+
+/* =========================================
+   🌟 無障礙與鍵盤焦點優化
+========================================= */
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
