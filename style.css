@@ -892,3 +892,18 @@ body.dark-theme .square-btn:hover {
     * { color: #000000 !important; }
     .main-headline .lang-content { margin-top: 0 !important; transform: none !important; }
 }
+
+/* --- 🌟 無障礙優化：尊重使用者的系統動態減弱設定 --- */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal-element {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
