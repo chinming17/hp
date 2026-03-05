@@ -211,9 +211,13 @@ body.dark-theme .navbar .logo {
     gap: 15px;
 }
 
+/* =========================================
+   語言下拉選單 (終極防跑版與絲滑動畫)
+========================================= */
 .lang-dropdown {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 }
 
 .dropdown-btn {
@@ -231,12 +235,95 @@ body.dark-theme .navbar .logo {
     color: var(--primary);
     font-size: 13px;
     transition: all 0.3s ease;
+    
+    /* 🌟 核心防跑版魔法 */
+    white-space: nowrap; /* 絕對禁止文字在動畫過程中換行 */
+    overflow: hidden;    /* 隱藏擠不下的文字，防止撐破按鈕 */
+}
+
+/* 確保按鈕內部的容器也是單行排列 */
+.dropdown-btn > span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 🌟 防止國旗在導覽列縮放時被擠壓變形 */
+.flag-icon { 
+    width: 18px; 
+    height: auto; 
+    object-fit: contain; 
+    flex-shrink: 0; /* 絕對不允許縮水變形 */
+    display: block;
 }
 
 .dropdown-btn:hover {
     background: var(--primary);
     color: var(--bg-card);
 }
+
+/* 導覽列縮小狀態的按鈕設定 */
+.navbar.shrunk .dropdown-btn #current-lang-text,
+.navbar.shrunk .dropdown-btn .fa-caret-down {
+    display: none !important;
+}
+
+/* 強制變成正圓形/小藥丸，維持完美置中 */
+.navbar.shrunk .dropdown-btn {
+    padding: 6px !important;
+    width: 36px !important;
+    min-width: 36px !important; 
+    justify-content: center !important;
+}
+
+/* --- 下拉選單內容 (改用透明度與位移，動畫更絲滑) --- */
+.dropdown-content {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    position: absolute;
+    top: 100%; /* 確保選單精準貼在按鈕正下方 */
+    right: 0;
+    background-color: var(--white);
+    min-width: 140px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 100;
+    margin-top: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.3, 1); /* 🌟 加入平滑彈出動畫 */
+}
+
+body.dark-theme .dropdown-content {
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+/* 當 JS 加上 show class 時，平滑浮現 */
+.dropdown-content.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-content a {
+    font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--bg-main);
+}
+/* ========================================= */
 
 /* 強制隱藏文字與箭頭 */
 .navbar.shrunk .dropdown-btn #current-lang-text,
