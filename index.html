@@ -462,6 +462,29 @@
     // 網頁初次載入時先啟動一次計時器
     resetIdleTimer();
 
+        // 攔截所有錨點連結，改用自訂的絲滑滾動
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        // 如果是下拉選單的空連結，不要執行
+        if (this.getAttribute('href') === '#') return;
+        
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            // 取得目標位置並扣除上方導覽列預留空間 (100px)
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 100;
+            
+            // 使用 window.scrollTo 的自帶平滑參數 (表現比 CSS 原生更好)
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
         // === 🌟 滾動淡入動畫觀察器 ===
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -488,6 +511,7 @@
         "max-glare": 0.1  // 反光強度 (0.1 非常微弱且有質感)
     });
 });
+        
     </script>
 </body>
 </html>
