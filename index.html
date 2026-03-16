@@ -338,10 +338,28 @@
         }
     }
 
-   function setLang(lang, text, flagSrc) {
-        document.getElementById('current-lang-text').innerText = text;
-        document.getElementById('current-flag').src = flagSrc;
-        document.getElementById("langMenu").classList.remove("show");
+function setLang(lang, text, flagSrc) {
+    document.getElementById('current-lang-text').innerText = text;
+    document.getElementById('current-flag').src = flagSrc;
+    document.getElementById("langMenu").classList.remove("show");
+    
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : (lang === 'jp' ? 'ja' : 'en');
+    document.title = lang === 'zh' ? 'Chinming Chan | 個人作品集' : (lang === 'jp' ? 'チン・キンメイ | ポートフォリオ' : 'Chinming Chan | Portfolio');
+    
+    document.querySelectorAll('.lang-content').forEach(el => {
+        el.style.display = 'none';
+        if (el.classList.contains(lang)) {
+            if (el.tagName === 'A' || el.tagName === 'SPAN') {
+                el.style.display = 'inline-block';
+            } else {
+                el.style.display = 'block';
+            }
+        }
+    });
+    
+    //新增這行：將使用者的語言選擇永久記憶在瀏覽器中
+    localStorage.setItem('preferred_lang', lang);
+}
         
         // 🌟 新增：動態修改 HTML lang 屬性，優化語音朗讀與 SEO
         document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : (lang === 'jp' ? 'ja' : 'en');
