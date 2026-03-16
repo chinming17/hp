@@ -393,10 +393,30 @@ function setLang(lang, text, flagSrc) {
         }
     }
 
-    // 🌟 新增：在 DOM 載入後，根據 body 的狀態初始化右上角的月亮/太陽圖示
+    // 🌟 整合：在 DOM 載入後，初始化深色模式圖示，並自動偵測/載入語言設定
     document.addEventListener('DOMContentLoaded', () => {
+        // 1. 深色模式圖示切換邏輯
         if (document.body.classList.contains('dark-theme')) {
             document.querySelector('#theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // 2. 自動語言偵測與記憶邏輯
+        const savedLang = localStorage.getItem('preferred_lang');
+        if (savedLang) {
+            // 若有歷史紀錄，直接套用
+            if(savedLang === 'zh') setLang('zh', '繁體中文', './public/Flags-Rounded_Rectangle/Taiwan.png');
+            else if(savedLang === 'jp') setLang('jp', '日本語', './public/Flags-Rounded_Rectangle/Japan.png');
+            else setLang('en', 'English', './public/Flags-Rounded_Rectangle/United_Kingdom.png');
+        } else {
+            // 若為首次造訪，讀取瀏覽器系統語言
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.toLowerCase().includes('zh')) {
+                setLang('zh', '繁體中文', './public/Flags-Rounded_Rectangle/Taiwan.png');
+            } else if (browserLang.toLowerCase().includes('ja')) {
+                setLang('jp', '日本語', './public/Flags-Rounded_Rectangle/Japan.png');
+            } else {
+                setLang('en', 'English', './public/Flags-Rounded_Rectangle/United_Kingdom.png');
+            }
         }
     });
     
