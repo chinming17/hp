@@ -6,8 +6,8 @@
     --white: #ffffff;
     --accent: #34495e;
     
-    /* 統一的次級標題專屬顏色 (低飽和大地棕色) */
-    --cat-unified: #705b4d;
+    /* 統一的次級標題專屬顏色 (提升對比度的赤陶磚紅色) */
+    --cat-unified: #9c5535;
 }
 
 body.dark-theme {
@@ -638,7 +638,7 @@ body.dark-theme .skill-item:hover {
     font-weight: 700;
     letter-spacing: 1.5px;
     padding-bottom: 0.8rem;
-    border-bottom: 2px solid rgba(112, 91, 77, 0.15); 
+    border-bottom: 2px solid rgba(156, 85, 53, 0.15); 
 }
 
 body.dark-theme .category-title {
