@@ -6,11 +6,8 @@
     --white: #ffffff;
     --accent: #34495e;
     
-    /* 新增：次級標題專屬顏色 (低飽和莫蘭迪色系) */
-    --cat-edu: #2c3e50;   /* 沉穩藍(沿用主色) */
-    --cat-work: #9c5c35;  /* 大地橘 */
-    --cat-proj: #3d6a59;  /* 松葉綠 */
-    --cat-skill: #6b4c6a; /* 復古紫 */
+    /* 統一的次級標題專屬顏色 (低飽和大地棕色) */
+    --cat-unified: #705b4d;
 }
 
 body.dark-theme {
@@ -21,11 +18,8 @@ body.dark-theme {
     --text: #b3b3b3;
     --accent: #ffffff;
     
-    /* 新增：深色模式對應的高亮專屬色 */
-    --cat-edu: #e0e0e0;   
-    --cat-work: #e6a785;  
-    --cat-proj: #8ab8a5;  
-    --cat-skill: #bda2bd; 
+    /* 深色模式對應的高亮統一色 */
+    --cat-unified: #d4baaa;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -637,25 +631,19 @@ body.dark-theme .skill-item:hover {
 .main-headline .lang-content.en, .section-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
 .category-title { 
-    color: var(--primary); 
+    color: var(--cat-unified); 
     margin-bottom: 1.5rem; 
     font-size: 1.4rem;
     font-family: 'Inter', 'Noto Sans TC', 'Noto Sans JP', sans-serif !important;
     font-weight: 700;
     letter-spacing: 1.5px;
     padding-bottom: 0.8rem;
-    border-bottom: 2px solid rgba(44, 62, 80, 0.1);
+    border-bottom: 2px solid rgba(112, 91, 77, 0.15); 
 }
 
 body.dark-theme .category-title {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(212, 186, 170, 0.15);
 }
-
-/* 🌟 新增：各區塊次級標題專屬顏色綁定 */
-.title-edu { color: var(--cat-edu); }
-.title-work { color: var(--cat-work); }
-.title-proj { color: var(--cat-proj); }
-.title-skill { color: var(--cat-skill); }
 
 .btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
 .btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
