@@ -567,7 +567,7 @@ body.dark-theme .section-card:hover {
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px;
     margin-top: 1.5rem;
 }
@@ -624,10 +624,20 @@ body.dark-theme .skill-item:hover {
 .main-headline .lang-content.jp, .section-title .lang-content.jp { font-family: 'Hina Mincho', serif; }
 .main-headline .lang-content.en, .section-title .lang-content.en { font-family: 'Limelight', cursive; font-weight: 400; }
 
-.category-title { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.4rem;}
-.category-title .lang-content.zh { font-family: 'Noto Serif TC', serif; font-weight: 700; letter-spacing: 2px;}
-.category-title .lang-content.jp { font-family: 'Zen Old Mincho', serif; font-weight: 700; letter-spacing: 2px;}
-.category-title .lang-content.en { font-family: 'Libre Baskerville', serif; font-weight: 700; letter-spacing: 1px;}
+.category-title { 
+    color: var(--primary); 
+    margin-bottom: 1.5rem; 
+    font-size: 1.4rem;
+    font-family: 'Inter', 'Noto Sans TC', 'Noto Sans JP', sans-serif !important;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(44, 62, 80, 0.1);
+}
+
+body.dark-theme .category-title {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
 
 .btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
 .btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
