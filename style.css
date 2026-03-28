@@ -5,6 +5,12 @@
     --text: #333333;
     --white: #ffffff;
     --accent: #34495e;
+    
+    /* 新增：次級標題專屬顏色 (低飽和莫蘭迪色系) */
+    --cat-edu: #2c3e50;   /* 沉穩藍(沿用主色) */
+    --cat-work: #9c5c35;  /* 大地橘 */
+    --cat-proj: #3d6a59;  /* 松葉綠 */
+    --cat-skill: #6b4c6a; /* 復古紫 */
 }
 
 body.dark-theme {
@@ -14,6 +20,12 @@ body.dark-theme {
     --primary: #e0e0e0;
     --text: #b3b3b3;
     --accent: #ffffff;
+    
+    /* 新增：深色模式對應的高亮專屬色 */
+    --cat-edu: #e0e0e0;   
+    --cat-work: #e6a785;  
+    --cat-proj: #8ab8a5;  
+    --cat-skill: #bda2bd; 
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -638,6 +650,12 @@ body.dark-theme .skill-item:hover {
 body.dark-theme .category-title {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
+
+/* 🌟 新增：各區塊次級標題專屬顏色綁定 */
+.title-edu { color: var(--cat-edu); }
+.title-work { color: var(--cat-work); }
+.title-proj { color: var(--cat-proj); }
+.title-skill { color: var(--cat-skill); }
 
 .btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
 .btn .lang-content.jp { font-family: 'Noto Sans JP', 'Inter', sans-serif; font-weight: 700; }
