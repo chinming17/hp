@@ -22,6 +22,15 @@ body.dark-theme {
     --cat-unified: #bcaaa4;
 }
 
+/* =========================================
+   🌟 核心語言控制邏輯 (徹底解決 FOUL 閃爍)
+========================================= */
+html[data-lang="zh"] .lang-content:not(.zh),
+html[data-lang="jp"] .lang-content:not(.jp),
+html[data-lang="en"] .lang-content:not(.en) {
+    display: none !important;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 ::selection {
