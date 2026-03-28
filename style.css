@@ -6,8 +6,8 @@
     --white: #ffffff;
     --accent: #34495e;
     
-    /* 統一的次級標題專屬顏色 (提升對比度的赤陶磚紅色) */
-    --cat-unified: #9c5535;
+    /* 統一的次級標題專屬顏色 (極具專業感與穩重度的深炭棕色) */
+    --cat-unified: #4a403a;
 }
 
 body.dark-theme {
@@ -19,7 +19,7 @@ body.dark-theme {
     --accent: #ffffff;
     
     /* 深色模式對應的高亮統一色 */
-    --cat-unified: #d4baaa;
+    --cat-unified: #bcaaa4;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -638,11 +638,11 @@ body.dark-theme .skill-item:hover {
     font-weight: 700;
     letter-spacing: 1.5px;
     padding-bottom: 0.8rem;
-    border-bottom: 2px solid rgba(156, 85, 53, 0.15); 
+    border-bottom: 2px solid rgba(74, 64, 58, 0.15); 
 }
 
 body.dark-theme .category-title {
-    border-bottom: 2px solid rgba(212, 186, 170, 0.15);
+    border-bottom: 2px solid rgba(188, 170, 164, 0.15);
 }
 
 .btn .lang-content.zh { font-family: 'Noto Sans TC', 'Inter', sans-serif; font-weight: 700; }
