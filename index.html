@@ -44,7 +44,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Inter:wght@300;400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Limelight&family=Nabla&family=Noto+Sans+JP:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=29">
 
     <noscript>
         <style>
@@ -252,6 +252,15 @@
                         <p class="job-title lang-content jp" style="display:none;">フリーランス翻訳者</p>
                         <p class="job-title lang-content en" style="display:none;">Freelance Translator</p>
                     </div>
+                    <div class="item-detail">
+                        <span class="date">專案經歷</span>
+                        <h4 class="lang-content zh">作品集：騎馬與砍殺2</h4>
+                        <h4 class="lang-content jp" style="display:none;">ポートフォリオ：Mount & Blade II</h4>
+                        <h4 class="lang-content en" style="display:none;">Portfolio: Mount & Blade II</h4>
+                        <p class="job-title lang-content zh">在地化翻譯（繁體中文 / 簡體中文）</p>
+                        <p class="job-title lang-content jp" style="display:none;">ローカライズ翻訳（繁体字中国語 / 簡体字中国語）</p>
+                        <p class="job-title lang-content en" style="display:none;">Localisation Translator (Traditional & Simplified Chinese)</p>
+                    </div>
                 </div>
                 <div class="resume-item">
                     <h3 class="category-title">
@@ -425,12 +434,14 @@
             }
         }
 
-        VanillaTilt.init(document.querySelector(".profile-card"), {
-            max: 5,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.1
-        });
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init(document.querySelector(".profile-card"), {
+                max: 5,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.1
+            });
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
