@@ -94,12 +94,30 @@ html:has(body.dark-theme) {
 
 h4.lang-content.en { font-size: 1.15em; }
 
-.bio-text.lang-content.en { 
-    font-size: 1.25rem; 
-    line-height: 1.2; 
-    text-align: left; 
-    hyphens: auto;    
+/* 🌟 全域內文排版優化 */
+.bio-text { 
+    font-size: 1.1rem; 
+    color: var(--text); 
+    margin-bottom: 2.5rem; 
+    max-width: 650px; 
+    line-height: 1.8; 
+    letter-spacing: 0.5px;
+    text-align: justify;
+    text-justify: inter-ideograph; 
+    text-wrap: pretty; /* 現代 CSS 魔法：避免最後一行出現孤立單字 */
 }
+
+/* 🌟 修正：英文專屬頂級排版 (靠左對齊、防孤字、微調字元/單字間距) */
+.bio-text.lang-content.en { 
+    font-size: 1.2rem; /* 微調字體大小以優化折行寬度 */
+    line-height: 1.65; 
+    text-align: left; /* 強制靠左，符合英文閱讀人體工學 */
+    hyphens: none; /* 徹底關閉斷字功能，保持單字完整 */
+    letter-spacing: -0.01em; /* 微幅收緊字母間距，讓單字更緊湊 */
+    word-spacing: 0.02em; /* 微幅增加單字之間的距離，提升辨識度 */
+    max-width: 680px; /* 透過精準的容器寬度限制，強迫文字達到最平順的換行狀態 */
+}
+
 .item-detail p.lang-content.en, 
 .item-detail .job-title.lang-content.en { font-size: 1.05rem; }
 .blog-content .lang-content.en { font-size: 1.1rem; }
@@ -476,18 +494,6 @@ body.dark-theme .dropdown-btn:hover { background: var(--primary); color: var(--b
 
 .main-headline .lang-content.en {
     margin-top: 20px; 
-}
-
-.bio-text { 
-    font-size: 1.1rem; 
-    color: var(--text); 
-    margin-bottom: 2.5rem; 
-    max-width: 650px; 
-    line-height: 1.8; 
-    letter-spacing: 0.5px;
-    text-align: justify;
-    text-justify: inter-ideograph; 
-    text-wrap: pretty; 
 }
 
 .cta-group { 
