@@ -52,7 +52,6 @@
                     targetLang = 'en';
                 }
             }
-            // 寫入 html 標籤，讓 CSS 在畫面出現的第一毫秒就能隱藏錯誤語言
             document.documentElement.setAttribute('data-lang', targetLang);
             document.documentElement.lang = targetLang === 'zh' ? 'zh-Hant' : (targetLang === 'jp' ? 'ja' : 'en');
         })();
@@ -65,7 +64,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Inter:wght@300;400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Limelight&family=Nabla&family=Noto+Sans+JP:wght@400;600&family=Noto+Sans+TC:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:wght@700;800&family=Sassy+Frass&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css?v=35">
+    <link rel="stylesheet" href="style.css?v=36">
 
     <noscript>
         <style>
@@ -402,12 +401,10 @@
     }
 
     function setLang(lang, text, flagSrc) {
-        // 更新按鈕 UI
         document.getElementById('current-lang-text').innerText = text;
         document.getElementById('current-flag').src = flagSrc;
         document.getElementById("langMenu").classList.remove("show");
         
-        // 🌟 核心切換：改變 html 標籤屬性，CSS 會自動隱藏/顯示對應內容
         document.documentElement.setAttribute('data-lang', lang);
         document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : (lang === 'jp' ? 'ja' : 'en');
         document.title = lang === 'zh' ? 'Chinming Chan | 個人作品集' : (lang === 'jp' ? 'チン・キンメイ | ポートフォリオ' : 'Chinming Chan | Portfolio');
@@ -433,12 +430,10 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. 深色模式圖示初始化
         if (document.body.classList.contains('dark-theme')) {
             document.querySelector('#theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
 
-        // 2. 語言選單 UI 初始化 (配合 Head 區塊的預先判定)
         const currentLang = document.documentElement.getAttribute('data-lang');
         if (currentLang === 'jp') {
             document.getElementById('current-lang-text').innerText = '日本語';
